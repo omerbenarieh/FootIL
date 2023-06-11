@@ -1,13 +1,19 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const userRouter = require("./routes/userRoutes");
+const bodyParser = require('body-parser');
 
-app.get("/", (req, res) => {
-  res.send("ROOT");
+const userRouter = require('./routes/userRoutes');
+const productRouter = require('./routes/productRoutes');
+const orderRouter = require('./routes/orderRoutes');
+app.use(bodyParser.json());
+
+// Root
+app.get('/', (req, res) => {
+  res.send('ROOT');
 });
+// Routers
+app.use('/users', userRouter);
+app.use('/orders', orderRouter);
+app.use('/products', productRouter);
 
-app.use("/users", userRouter);
-
-app.listen(3000, () => {
-  console.log("Server is Running....");
-});
+module.exports = app;
