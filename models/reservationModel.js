@@ -1,9 +1,8 @@
-const mongoose = require("mongoose");
-
+const mongoose = require('mongoose');
 const reservationSchema = new mongoose.Schema({
   id: {
     type: Number,
-    unique: [true, "Must have unique reservation id"],
+    unique: [true, 'Must have unique reservation id'],
   },
 
   date: Date,
@@ -17,6 +16,8 @@ const reservationSchema = new mongoose.Schema({
   },
 
   status: {
-    arrived: ["true", "false"],
+    arrived: ['true', 'false'],
   },
 });
+
+module.exports = reservationSchema;
