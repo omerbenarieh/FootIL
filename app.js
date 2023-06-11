@@ -9,5 +9,5 @@ app.get("/", (req, res) => {
 app.use("/users", userRouter);
 
 app.listen(3000, () => {
-  console.log("Server is Running...");
+  console.log("Server is Running....");
 });
