@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'User must have a name.'],
@@ -57,9 +57,10 @@ const userSchema = mongoose.Schema({
     floor: Number,
     apartment: Number,
   },
-
-  //need to add list of product model
-  balance: Number,
+  // need to add list of product model
+  balance: {
+    type: Number,
+    default: 500,
+  },
 });
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);

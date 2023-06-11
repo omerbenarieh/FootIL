@@ -1,24 +1,44 @@
 const User = require('../models/userModel');
 
-exports.getAllUsers = (req, res) => {
-  res.status(200).send('ALL USERS');
-};
-
-exports.getUser = (req, res) => {
-  res.status(200).send(`Got user ${req.params.id}`);
-};
-
-exports.createUser = (req, res) => {
+exports.getAllUsers = async (req, res) => {
+  const users = await User.find({ active: true }).select('-__v');
   res.status(200).json({
     status: 'success',
-    data: req.body,
+    data: {
+      results: users.length,
+      users,
+    },
   });
 };
 
-exports.updateUser = (req, res) => {
-  res.status(200).send(`User ${req.params.id} has been updated.`);
+exports.getUser = async (req, res) => {
+  const id = req.params.id;
+  const user = await User.findById(id);
+  res.status(200).json({
+    status: 'success',
+    data: user,
+  });
 };
 
-exports.deleteUser = (req, res) => {
-  res.status(200).send(`User ${req.params.id} has been deleted.`);
+exports.createUser = async (req, res) => {
+  const user = await User.create(req.body);
+  res.status(201).json({
+    status: 'success',
+    data: user,
+  });
+};
+
+exports.updateUser = async (req, res) => {
+  const id = req.params.id;
+  const user = await User.findByIdAndUpdate(id, req.body);
+  res.status(204).json({
+    status: 'success',
+    data: user,
+  });
+};
+
+exports.deleteUser = async (req, res) => {
+  const id = req.params.id;
+  const user = await User.findByIdAndUpdate(id, { active: false });
+  res.status(410).json();
 };
