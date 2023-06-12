@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const app = require('./app');
 
 // Enable config.env file
 dotenv.config({ path: './config.env' });
@@ -16,7 +17,6 @@ mongoose
 
 // Start Server
 const port = process.env.PORT;
-const app = require('./app');
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`);
 });
