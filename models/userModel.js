@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'User must have a name.'],
     trim: true,
+    minlength: 4,
   },
   email: {
     type: String,
@@ -30,6 +31,7 @@ const userSchema = new mongoose.Schema({
       },
       message: 'Passwords should be the same!',
     },
+    select: false,
   },
   passwordChangedAt: Date,
   passwordResetToken: String,

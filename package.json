@@ -4,7 +4,6 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
   "author": "",
@@ -15,6 +14,7 @@
     "dotenv": "^16.1.4",
     "mongodb": "^5.6.0",
     "mongoose": "^7.2.3",
+    "socketio": "^1.0.0",
     "validator": "^13.9.0"
   }
 }
