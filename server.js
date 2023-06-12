@@ -12,7 +12,11 @@ const DB = process.env.DATABASE.replace(
 
 // Connecting to DB
 mongoose
-  .connect(DB)
+  .connect(DB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: 'FootIL',
+  })
   .then(con => console.log('DB connection was successful! :)'));
 
 // Start Server
