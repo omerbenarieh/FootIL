@@ -8,9 +8,7 @@ const { Server } = require('socket.io');
 const app = require('./app');
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
-  cors: {
-    origin: ['http://127.0.0.1:5500'],
-  },
+  cors: '*',
 });
 
 // Enable config.env file
