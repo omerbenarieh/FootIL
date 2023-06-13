@@ -7,6 +7,7 @@ const productRouter = require('./routes/productRoutes');
 const orderRouter = require('./routes/orderRoutes');
 
 const app = express();
+
 app.use(morgan(':method :url :status :response-time ms'));
 app.use(bodyParser.json());
 
