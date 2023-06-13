@@ -1,11 +1,13 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
 const orderRouter = require('./routes/orderRoutes');
 
+const app = express();
+app.use(morgan(':method :url :status :response-time ms'));
 app.use(bodyParser.json());
 
 // Root

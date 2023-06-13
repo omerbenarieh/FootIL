@@ -29,11 +29,20 @@ mongoose
   })
   .then(() => console.log('DB connection was successful! 😁'));
 
+// Some Tests for Socket comunicating with clients.
 io.on('connection', socket => {
-  console.log(`A User connected with Socket ID of: ${socket.id}`);
+  console.log(`Client connected with id: ${socket.id}`);
+  socket.on('send-msg', (message, room) => {
+    if (room === '') {
+      socket.broadcast.emit('receive-msg', message + ` ${socket.id}`);
+    } else {
+      socket.to(room).emit('receive-msg', message + ` from ${socket.id}`);
+    }
+  });
 });
+
 // Start Server
 const port = process.env.PORT;
-httpServer.listen(port, () => {
+httpServer.listen(3000, () => {
   console.log(`Server is running on port ${port}`);
 });
