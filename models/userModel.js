@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema({
     },
     select: false,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
@@ -59,6 +63,7 @@ const userSchema = new mongoose.Schema({
     floor: Number,
     apartment: Number,
   },
+
   // need to add list of product model
   balance: {
     type: Number,
