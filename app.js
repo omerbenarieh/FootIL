@@ -10,6 +10,7 @@ const app = express();
 
 app.use(morgan(':method :url :status :response-time ms'));
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Root
 app.get('/', (req, res) => {
