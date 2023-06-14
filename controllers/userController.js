@@ -24,11 +24,19 @@ exports.getUser = async (req, res) => {
 };
 
 exports.createUser = async (req, res) => {
-  const user = await User.create(req.body);
-  res.status(201).json({
-    status: 'success',
-    data: user,
-  });
+  try {
+    const user = await User.create(req.body);
+    res.status(201).json({
+      status: 'success',
+      data: user,
+    });
+  } catch (err) {
+    const message = err.errors.password.message;
+    res.status(404).json({
+      status: 'fail',
+      message,
+    });
+  }
 };
 
 exports.updateUser = async (req, res) => {
