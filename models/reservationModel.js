@@ -8,11 +8,11 @@ const reservationSchema = new mongoose.Schema({
   date: Date,
 
   user: {
-    //refarance
+    // Referrence
   },
 
   products: {
-    //users products,
+    //User product,
   },
 
   status: {
@@ -20,4 +20,4 @@ const reservationSchema = new mongoose.Schema({
   },
 });
 
-module.exports = reservationSchema;
+module.exports = mongoose.model('Reservation', reservationSchema);

@@ -2,11 +2,8 @@ const User = require('../models/userModel');
 
 exports.getAllUsers = async (req, res) => {
   let users;
-  if (req.query) {
-    users = await User.find(req.query).select('-__v');
-  } else {
-    users = await User.find({ active: true }).select('-__v');
-  }
+  if (req.query) users = await User.find(req.query).select('-__v');
+  else users = await User.find({ active: true }).select('-__v');
 
   res.status(200).json({
     status: 'success',
@@ -20,7 +17,6 @@ exports.getAllUsers = async (req, res) => {
 exports.getUser = async (req, res) => {
   const id = req.params.id;
   const user = await User.findById(id).select('-__v');
-
   res.status(200).json({
     status: 'success',
     data: user,
