@@ -19,7 +19,6 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Please provide a password'],
-    // minlength: 8,
     select: false,
     validate: [validator.isStrongPassword, 'Please use a strong password.'],
   },
@@ -36,15 +35,12 @@ const userSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: () => Date.now(),
+    immutable: true,
   },
-  passwordChangedAt: Date,
-  passwordResetToken: String,
-  passwordResetExpires: Date,
-  active: {
-    type: Boolean,
-    default: true,
-    select: false,
+  passwordChangedAt: {
+    type: Date,
+    default: () => Date.now(),
   },
   image: {
     type: String,
@@ -65,10 +61,10 @@ const userSchema = new mongoose.Schema({
     apartment: Number,
   },
 
-  // need to add list of product model
   balance: {
     type: Number,
     default: 500,
   },
 });
+
 module.exports = mongoose.model('User', userSchema);

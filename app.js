@@ -8,7 +8,7 @@ const orderRouter = require('./routes/orderRoutes');
 
 const app = express();
 
-app.use(morgan(':method :url :status :response-time ms'));
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
