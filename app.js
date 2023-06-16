@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
+const globalErrorHandler = require('./controllers/errorController');
+const AppError = require('./utils/appError');
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
 const orderRouter = require('./routes/orderRoutes');
@@ -21,5 +23,13 @@ app.get('/', (req, res) => {
 app.use('/users', userRouter);
 app.use('/orders', orderRouter);
 app.use('/products', productRouter);
+
+// Routes Errors.
+app.use('*', (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
+// Global Error handling
+app.use(globalErrorHandler);
 
 module.exports = app;
