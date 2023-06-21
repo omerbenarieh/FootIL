@@ -1,23 +1,29 @@
 const mongoose = require('mongoose');
+
 const reservationSchema = new mongoose.Schema({
   id: {
     type: Number,
-    unique: [true, 'Must have unique reservation id'],
+    unique: [true, 'Must have a unique reservation id'],
   },
 
   date: Date,
 
   user: {
-    // Referrence
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
   },
 
-  products: {
-    //User product,
-  },
-
+  products: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Product',
+  }],
   status: {
-    arrived: ['true', 'false'],
+    arrived: {
+      type: Boolean,
+      default: false,
+    },
   },
+
   address: {
     type: String,
     city: String,
@@ -25,7 +31,7 @@ const reservationSchema = new mongoose.Schema({
     houseNumber: Number,
     floor: Number,
     apartment: Number,
-    unique:false,
+    unique: false,
   },
 });
 
