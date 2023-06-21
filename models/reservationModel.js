@@ -19,9 +19,14 @@ const reservationSchema = new mongoose.Schema({
     arrived: ['true', 'false'],
   },
   address: {
-    Type: String,
-    unique: false,
-  }
+    type: String,
+    city: String,
+    street: String,
+    houseNumber: Number,
+    floor: Number,
+    apartment: Number,
+    unique:false,
+  },
 });
 
 module.exports = mongoose.model('Reservation', reservationSchema);
