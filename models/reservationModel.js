@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const reservationSchema = new mongoose.Schema({
   id: {
     type: Number,
@@ -9,14 +8,16 @@ const reservationSchema = new mongoose.Schema({
   date: Date,
 
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.SchemaTypes.ObjectId,
     ref: 'User',
   },
 
-  products: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Product',
-  }],
+  products: [
+    {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Product',
+    },
+  ],
   status: {
     arrived: {
       type: Boolean,
