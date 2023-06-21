@@ -18,6 +18,10 @@ const reservationSchema = new mongoose.Schema({
   status: {
     arrived: ['true', 'false'],
   },
+  address: {
+    Type: String,
+    unique: false,
+  }
 });
 
 module.exports = mongoose.model('Reservation', reservationSchema);
