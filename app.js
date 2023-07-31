@@ -6,7 +6,6 @@ const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
-const reservationRouter = require('./routes/reservationRoutes');
 
 const app = express();
 
@@ -21,7 +20,6 @@ app.get('/', (req, res) => {
 
 // Routers
 app.use('/users', userRouter);
-app.use('/orders', reservationRouter);
 app.use('/products', productRouter);
 
 // Routes Errors.
