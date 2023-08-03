@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
 const globalErrorHandler = require('./controllers/errorController');
-const AppError = require('./utils/appError');
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
 
