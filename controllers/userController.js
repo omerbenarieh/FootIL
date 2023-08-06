@@ -1,5 +1,4 @@
 const User = require('../models/userModel');
-const { use } = require('../routes/userRoutes');
 const catchAsync = require('../utils/catchAsync');
 
 exports.checkLogin = async (req, res) => {
