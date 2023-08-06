@@ -1,15 +1,29 @@
-const loginBtn = document.getElementById('login-btn');
-loginBtn.addEventListener('click', loginUser);
+$('#login-btn').click(loginUser);
 
-function loginUser(event) {
-  event.preventDefault();
+async function loginUser(e) {
+  e.preventDefault();
 
-  // Perform login validation (you can add your backend validation here)
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+  const body = {
+    email: $('#email')[0].value,
+    password: $('#password')[0].value,
+  };
 
-  // Sample validation (replace this with your actual validation logic)
-
-  // Redirect to the home page after successful login
-  window.location.href = '/';
+  $.ajax({
+    type: 'POST',
+    url: 'http://localhost:3000/api/users/login',
+    contentType: 'application/json',
+    data: JSON.stringify(body),
+    success: user => {
+      // user is from DB in json format.
+      if (user.status === 'success') {
+        const userName = user.data[0].name;
+        console.log(`${userName} Logged in !`);
+        window.location.href = '/';
+      } else {
+        alert('Your email or password are wrong.. Please try again :)');
+        $('#email')[0].value = '';
+        $('#password')[0].value = '';
+      }
+    },
+  });
 }
