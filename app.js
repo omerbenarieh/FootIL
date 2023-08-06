@@ -6,7 +6,6 @@ const path = require('path');
 
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
-const viewsRouter = require('./routes/viewsRoutes');
 
 const app = express();
 
@@ -20,10 +19,12 @@ app.use(express.urlencoded({ extended: true }));
 // Set the ejs View Engine
 app.set('view engine', 'ejs');
 app.engine('ejs', require('ejs').__express);
-app.use(express.static(path.join(__dirname, 'public/js')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Root
-app.use('/', viewsRouter);
+app.get('/', (req, res) => {
+  res.render('index');
+});
 
 // Routers
 app.use('/api/users', userRouter);
