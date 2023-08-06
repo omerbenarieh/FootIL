@@ -1,50 +1,33 @@
-// Declarations///////////
-//////////////////////////
+// Declarations //////////////////////////////
+//////////////////////////////////////////////
 
 $('#login').click(loginUser);
 $('#signup').click(signUpUser);
 
-//////////////////////////
-//////////////////////////
+//////////////////////////////////////////////
+//////////////////////////////////////////////
 
 // Event Listeners Callbacks//////////////////
 //////////////////////////////////////////////
 
 async function loginUser(e) {
   e.preventDefault();
-  buildLoginForm();
   hideMainButtons();
+  displayForm($('#login-container'));
 
   $('#login-btn').click(attachLoginListener);
 }
 
 async function signUpUser(e) {
   e.preventDefault();
-  console.log(e.target);
+  hideMainButtons();
+  displayForm($('#signup-container'));
+
+  $('#signup-btn').click(attachSignupListener);
 }
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////
-
-/// Building HTML handlers ///////////////////
-//////////////////////////////////////////////
-const buildLoginForm = () => {
-  if ($('#login-container').html().trim() !== '') return;
-  const html = `
-  <h1>Login Form</h1>
-    <form id="loginForm">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required /><br />
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required /><br />
-
-        <button type="button" id="login-btn"/>Login</button>
-    </form>`;
-
-  $('#login-container').html(html);
-  displayLoginForm($('#login-container'));
-};
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////
@@ -62,16 +45,16 @@ function displayMainButtons() {
   $('#signup').show();
 }
 
-function displayLoginForm(loginForm) {
-  loginForm.show();
+function displayForm(form) {
+  form.show();
 }
 
-function hideLoginForm(loginForm) {
-  loginForm.hide();
+function hideForm(form) {
+  form.hide();
 }
 
 function displayLoggedUser(username) {
-  hideLoginForm($('#login-container'));
+  hideForm($('#login-container'));
   $('#cur-user').text(`Hello ${username}! Welcome to Foot-IL :)`);
   $('#cur-user').show();
   hideLoginError();
@@ -79,6 +62,10 @@ function displayLoggedUser(username) {
 
 function displayLoginError() {
   alert(`Incorrect Email / Password... Please Try Again.`);
+}
+
+function displaySignupError() {
+  alert('Please fill the fields again');
 }
 
 function hideLoginError() {
@@ -98,8 +85,8 @@ function clearFields(...fields) {
 //////////////////////////////////////////////
 async function attachLoginListener(e) {
   e.preventDefault();
-  const email = $('#email')[0].value;
-  const password = $('#password')[0].value;
+  const email = $('#email').val();
+  const password = $('#password').val();
   clearFields('email', 'password');
 
   const body = {
@@ -115,8 +102,40 @@ async function attachLoginListener(e) {
     success: function (user) {
       displayLoggedUser(user.data[0].name);
     },
-    error: function (err) {
+    error: function () {
       displayLoginError();
+    },
+  });
+}
+
+async function attachSignupListener(e) {
+  e.preventDefault();
+
+  const body = {
+    name: $('#name').val(),
+    email: $('#new_email').val(),
+    password: $('#new_password').val(),
+    confirmPassword: $('#confirmPassword').val(),
+    image: $('#image').val(),
+    balance: $('#balance').val(),
+    city: $('#city').val(),
+    street: $('#street').val(),
+    houseNumber: $('#houseNumber').val(),
+    floor: $('#floor').val(),
+    apartment: $('#apartment').val(),
+  };
+
+  $.ajax({
+    type: 'POST',
+    url: 'http://localhost:3000/api/users',
+    ContentType: 'application/json',
+    data: body,
+    success: function (user) {
+      displayLoggedUser(user.data[0].name);
+    },
+    error: function () {
+      clearFields('name', 'new_password', 'new_email', 'confirmPassword');
+      displaySignupError();
     },
   });
 }

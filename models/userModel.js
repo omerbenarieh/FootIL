@@ -20,9 +20,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide a password'],
     select: false,
-    validate: [validator.isStrongPassword, 'Please use a strong password.'],
+    // validate: [validator.isStrongPassword, 'Please use a strong password.'],
   },
-  passwordConfirm: {
+
+  confirmPassword: {
     type: String,
     required: [true, 'Please confirm your password.'],
     validate: {
@@ -51,15 +52,11 @@ const userSchema = new mongoose.Schema({
     enum: ['user', 'admin'],
     default: 'user',
   },
-
-  address: {
-    type: String,
-    city: String,
-    street: String,
-    houseNumber: Number,
-    floor: Number,
-    apartment: Number,
-  },
+  city: String,
+  street: String,
+  houseNumber: String,
+  floor: String,
+  apartment: String,
 
   balance: {
     type: Number,
