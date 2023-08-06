@@ -6,6 +6,7 @@ const path = require('path');
 
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
+const viewsRouter = require('./routes/viewsRoutes');
 
 const app = express();
 
@@ -22,9 +23,7 @@ app.engine('ejs', require('ejs').__express);
 app.use(express.static(path.join(__dirname, 'public/js')));
 
 // Root
-app.get('/', (req, res) => {
-  res.render('home');
-});
+app.use('/', viewsRouter);
 
 // Routers
 app.use('/users', userRouter);
