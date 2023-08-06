@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public/js')));
 app.use('/', viewsRouter);
 
 // Routers
-app.use('/users', userRouter);
-app.use('/products', productRouter);
+app.use('/api/users', userRouter);
+app.use('/api/products', productRouter);
 
 module.exports = app;

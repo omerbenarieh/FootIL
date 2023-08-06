@@ -1,29 +1,26 @@
-const signupBtn = document.getElementById('signup-btn');
+$('#signup-btn').click(signUp);
 
-const name = document.getElementById('name');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const confirm_password = document.getElementById('confirm_password');
-const image = document.getElementById('image');
-const address = document.getElementById('address');
-const balance = document.getElementById('balance');
+async function signUp(e) {
+  e.preventDefault();
 
-signupBtn.addEventListener('click', signUp);
-
-async function signUp(event) {
-  event.preventDefault();
   const body = {
-    name: name.value,
-    email: email.value,
-    password: password.value,
-    passwordConfirm: confirm_password.value,
+    name: $('#name').val(),
+    email: $('#email').val(),
+    password: $('#password').val(),
+    passwordConfirm: $('#confirm_password').val(),
   };
-  await fetch('http://localhost:3000/users', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+
+  $.ajax({
+    url: 'http://localhost:3000/api/users',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify(body),
+    success: function (user) {
+      console.log(user);
+      window.location.href = '/';
     },
-    body: JSON.stringify(body),
+    error: function (error) {
+      console.error('Error:', error);
+    },
   });
-  window.location.href = '/';
 }

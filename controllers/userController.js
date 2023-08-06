@@ -1,5 +1,22 @@
 const User = require('../models/userModel');
+const { use } = require('../routes/userRoutes');
 const catchAsync = require('../utils/catchAsync');
+
+exports.checkLogin = async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  const user = await User.find({ email, password });
+  if (user.length > 0)
+    res.status(200).json({
+      status: 'success',
+      data: user,
+    });
+  else
+    res.status(404).json({
+      status: 'error',
+    });
+};
 
 exports.getAllUsers = async (req, res) => {
   let users;
