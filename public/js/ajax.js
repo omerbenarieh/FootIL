@@ -9,10 +9,12 @@ async function login(e) {
     ContentType: 'application/json',
     data: loginBody(),
     success: function (user) {
-      utils.displayLoggedUser(`Welcome to Foot-IL, ${user.data[0].name} :)`);
+      console.log('Good ! You are logged in ! :)');
     },
-    error: function () {
-      utils.displayLoginError('There was an error while trying to login :(');
+    error: function (error) {
+      utils.displayLoginError(
+        'Incorrect email or password, Please try again...'
+      );
     },
   });
 }
@@ -22,7 +24,7 @@ async function signup(e) {
 
   $.ajax({
     type: 'POST',
-    url: 'http://localhost:3000/api/users',
+    url: 'http://localhost:3000/api/users/signup',
     ContentType: 'application/json',
     data: signupBody(),
     success: function () {

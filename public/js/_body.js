@@ -1,3 +1,13 @@
+function fieldIsEmpty(fields) {
+  const newBody = {};
+  Object.keys(fields).forEach(key => {
+    if (fields[key] !== '') {
+      newBody[key] = fields[key];
+    }
+  });
+  return newBody;
+}
+
 function signupBody() {
   const body = {
     name: $('#name').val(),
@@ -12,7 +22,7 @@ function signupBody() {
     floor: $('#floor').val(),
     apartment: $('#apartment').val(),
   };
-  return body;
+  return fieldIsEmpty(body);
 }
 
 function loginBody() {
