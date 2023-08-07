@@ -8,8 +8,8 @@ async function login(e) {
     url: 'http://localhost:3000/api/users/login',
     ContentType: 'application/json',
     data: loginBody(),
-    success: function (user) {
-      console.log('Good ! You are logged in ! :)');
+    success: function (token) {
+      utils.displayLoggedUser('Good ! You are logged in ! :)');
     },
     error: function (error) {
       utils.displayLoginError(
@@ -29,8 +29,7 @@ async function signup(e) {
     data: signupBody(),
     success: function () {
       utils.clearFields('name', 'new_password', 'new_email', 'confirmPassword');
-      utils.hideForm('signup-container');
-      utils.displayForm('login-container');
+      utils.displayLoggedUser('Good ! You are logged in ! :)');
     },
     error: function () {
       utils.displaySignupError('There was an error while trying to signup :(');

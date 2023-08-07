@@ -25,6 +25,7 @@ class Utils {
 
   displayLoggedUser(msg) {
     this.hideForm('login-container');
+    this.hideForm('signup-container');
     $('#cur-user').text(msg);
     this.displayForm('cur-user');
   }
