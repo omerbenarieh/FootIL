@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -19,8 +20,11 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Please provide a password'],
+    /* Remove comment when deploy
+
+     validate: [validator.isStrongPassword, 'Please use a strong *password.'],*/
+
     select: false,
-    // validate: [validator.isStrongPassword, 'Please use a strong password.'],
   },
 
   confirmPassword: {
@@ -43,25 +47,61 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: () => Date.now(),
   },
+
   image: {
     type: String,
     default: 'default.jpg',
   },
+
   role: {
     type: String,
     enum: ['user', 'admin'],
     default: 'user',
   },
-  city: String,
-  street: String,
-  houseNumber: String,
-  floor: String,
-  apartment: String,
+
+  city: {
+    type: String,
+    default: 'Tel Aviv',
+  },
+
+  street: {
+    type: String,
+    default: 'Florentin',
+  },
+
+  houseNumber: {
+    type: Number,
+    default: 10,
+  },
+
+  floor: {
+    type: Number,
+    default: 10,
+  },
+
+  apartment: {
+    type: Number,
+    default: 10,
+  },
 
   balance: {
     type: Number,
     default: 500,
   },
 });
+
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
+  this.password = await bcrypt.hash(this.password, 12);
+
+  this.confirmPassword = undefined;
+  next();
+});
+
+userSchema.methods.correctPassword = async function (password, hashPassword) {
+  console.log(await bcrypt.hash(password, 12));
+  console.log(hashPassword);
+  return await bcrypt.compare(password, hashPassword);
+};
 
 module.exports = mongoose.model('User', userSchema);
