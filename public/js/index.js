@@ -131,7 +131,8 @@ async function attachSignupListener(e) {
     ContentType: 'application/json',
     data: body,
     success: function (user) {
-      displayLoggedUser(user.data[0].name);
+      console.log(user.data.name);
+      displayLoggedUser(user.data.name);
     },
     error: function () {
       clearFields('name', 'new_password', 'new_email', 'confirmPassword');
