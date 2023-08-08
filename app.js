@@ -6,6 +6,8 @@ const path = require('path');
 
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
+const AppError = require('./utils/appError');
+const globalErrorHandler = require('./controllers/errorController');
 
 const app = express();
 
@@ -29,5 +31,12 @@ app.get('/', (req, res) => {
 // Routers
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
+
+// Handling Undefined Routes
+app.all('*', (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this erver!`, 404));
+});
+
+app.use(globalErrorHandler);
 
 module.exports = app;

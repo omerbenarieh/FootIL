@@ -99,8 +99,6 @@ userSchema.pre('save', async function (next) {
 });
 
 userSchema.methods.correctPassword = async function (password, hashPassword) {
-  console.log(await bcrypt.hash(password, 12));
-  console.log(hashPassword);
   return await bcrypt.compare(password, hashPassword);
 };
 

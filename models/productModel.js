@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-
+// TODO
 const productSchema = mongoose.Schema({
   productName: String,
 
