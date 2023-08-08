@@ -3,4 +3,5 @@ exports.getAllProducts = (req, res) => {
 };
 exports.updateProducts = (req, res) => {
   res.send('Update Product');
-}
+};
+// TODO

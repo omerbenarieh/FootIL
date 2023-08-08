@@ -3,18 +3,18 @@ import { signupBody, loginBody } from './_body.js';
 
 async function login(e) {
   e.preventDefault();
+
   $.ajax({
     type: 'POST',
     url: 'http://localhost:3000/api/users/login',
     ContentType: 'application/json',
     data: loginBody(),
-    success: function (token) {
-      utils.displayLoggedUser('Good ! You are logged in ! :)');
+    success: async function (data) {
+      const username = data.user.name.split(' ')[0];
+      utils.displayLoggedUser(`Hello ${username} ! You are logged in ! :)`);
     },
     error: function (error) {
-      utils.displayLoginError(
-        'Incorrect email or password, Please try again...'
-      );
+      utils.displayLoginError(error.responseText);
     },
   });
 }
@@ -27,7 +27,8 @@ async function signup(e) {
     url: 'http://localhost:3000/api/users/signup',
     ContentType: 'application/json',
     data: signupBody(),
-    success: function () {
+    success: function (data) {
+      console.log(data);
       utils.clearFields('name', 'new_password', 'new_email', 'confirmPassword');
       utils.displayLoggedUser('Good ! You are logged in ! :)');
     },
