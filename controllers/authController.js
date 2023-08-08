@@ -9,16 +9,29 @@ const signToken = id => {
   });
 };
 
-exports.signup = catchAsync(async (req, res, next) => {
-  const newUser = await User.create(req.body);
+const createSendToken = (user, statusCode, res) => {
+  const token = signToken(user._id);
+  const coookieOptions = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+  };
 
-  const token = signToken(newUser._id);
+  res.cookie('jwt', token, coookieOptions);
 
-  res.status(201).json({
+  user.password = undefined;
+
+  res.status(statusCode).json({
     status: 'success',
     token,
-    data: newUser,
+    user,
   });
+};
+
+exports.signup = catchAsync(async (req, res, next) => {
+  const user = await User.create(req.body);
+  createSendToken(user, 201, res);
 });
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -58,5 +71,24 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   // 2) Verification token
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+  // 3) Check if user still exists
+  const freshUser = await User.findById(decoded.id);
+  if (!freshUser) {
+    return next(
+      new AppError('The user belonging to this token does no longer exist', 401)
+    );
+  }
+
+  // GRANT ACCESS TO PROTECTED ROUTE
+  req.user = freshUser;
   next();
 });
+
+exports.isAdmin = (req, res, next) => {
+  console.log(req.user.name);
+  console.log(req.user.role);
+  if (!req.user || req.user.role !== 'admin')
+    return next(new AppError('This Route is only For Logged in Admins.', 404));
+  next();
+};

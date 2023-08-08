@@ -4,9 +4,10 @@ import { signupBody, loginBody } from './_body.js';
 async function login(e) {
   e.preventDefault();
 
+  const url = 'http://localhost:3000/api/users/login';
   $.ajax({
     type: 'POST',
-    url: 'http://localhost:3000/api/users/login',
+    url,
     ContentType: 'application/json',
     data: loginBody(),
     success: async function (data) {
@@ -22,18 +23,18 @@ async function login(e) {
 async function signup(e) {
   e.preventDefault();
 
+  const url = 'http://localhost:3000/api/users/signup';
   $.ajax({
     type: 'POST',
-    url: 'http://localhost:3000/api/users/signup',
+    url,
     ContentType: 'application/json',
     data: signupBody(),
     success: function (data) {
-      console.log(data);
-      utils.clearFields('name', 'new_password', 'new_email', 'confirmPassword');
-      utils.displayLoggedUser('Good ! You are logged in ! :)');
+      const username = data.user.name.split(' ')[0];
+      utils.displayLoggedUser(`Hello ${username} ! You are logged in ! :)`);
     },
-    error: function () {
-      utils.displaySignupError('There was an error while trying to signup :(');
+    error: function (error) {
+      utils.displaySignupError(error.responseText);
     },
   });
 }
