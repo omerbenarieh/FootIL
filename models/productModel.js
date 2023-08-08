@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+
+// TODO
 const productSchema = mongoose.Schema({
   productName: String,
 
@@ -22,7 +24,7 @@ const productSchema = mongoose.Schema({
 
   color: String,
 
-  prise: Number,
+  price: Number,
 });
 
-module.exports = productSchema;
+module.exports = mongoose.model('Product', productSchema);
