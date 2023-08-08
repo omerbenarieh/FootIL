@@ -4,7 +4,13 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
-router.route('/').get(authController.protect, userController.getAllUsers);
+router
+  .route('/')
+  .get(
+    authController.protect,
+    authController.isAdmin,
+    userController.getAllUsers
+  );
 
 // Creating user
 router.post('/signup', authController.signup);
@@ -14,8 +20,12 @@ router.post('/login', authController.login);
 
 router
   .route('/:id')
-  .get(userController.getUser)
-  .patch(userController.updateUser)
-  .delete(userController.deleteUser);
+  .get(authController.protect, userController.getUser)
+  .patch(authController.protect, userController.updateUser)
+  .delete(
+    authController.protect,
+    authController.isAdmin,
+    userController.deleteUser
+  );
 
 module.exports = router;
