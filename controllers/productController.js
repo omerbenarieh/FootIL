@@ -1,5 +1,8 @@
 exports.getAllProducts = (req, res) => {
-  res.send('ALL PRODUCTS');
+  res.status(200).json({
+    status: 'success',
+    data: 'ALL PRODUCTS',
+  });
 };
 exports.updateProducts = (req, res) => {
   res.send('Update Product');
