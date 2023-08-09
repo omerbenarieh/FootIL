@@ -48,13 +48,7 @@ exports.login = catchAsync(async (req, res, next) => {
   const correct = await user.correctPassword(password, user.password);
   if (!correct) return next(new AppError('Incorrect email or password', 404));
 
-  const token = signToken(user._id);
-
-  res.status(200).json({
-    status: 'success',
-    token,
-    user,
-  });
+  createSendToken(user, 200, res);
 });
 
 exports.protect = catchAsync(async (req, res, next) => {
@@ -86,8 +80,6 @@ exports.protect = catchAsync(async (req, res, next) => {
 });
 
 exports.isAdmin = (req, res, next) => {
-  console.log(req.user.name);
-  console.log(req.user.role);
   if (!req.user || req.user.role !== 'admin')
     return next(new AppError('This Route is only For Logged in Admins.', 404));
   next();
