@@ -1,20 +1,20 @@
 const mongoose = require('mongoose');
 
-const sizeSchema = new mongoose.Schema({//a size shoe schema for the product
+const sizeSchema = new mongoose.Schema({
+  //a size shoe schema for the product
   sizeNumber: Number,
   quantity: {
-    type: Number, default: 0,
-  }
+    type: Number,
+    default: 0,
+  },
 });
 
-const userProdouctSchema = new mongoose.Schema({//product card schema for users that have the prodouct in their bag
+const userProdouctSchema = new mongoose.Schema({
+  //product card schema for users that have the prodouct in their bag
   userId: String,
   sizeNumber: Number,
-
 });
 
-
-// TODO
 const productSchema = mongoose.Schema({
   productName: String,
 
@@ -24,7 +24,6 @@ const productSchema = mongoose.Schema({
     trim: true,
     unique: true,
   },
-
 
   companyName: {
     type: String,
@@ -51,25 +50,19 @@ const productSchema = mongoose.Schema({
   price: Number,
 });
 
-
-
 //size schema methods
 
-sizeSchema.methods.buy = async function () {//buy the product with the size 
+sizeSchema.methods.buy = function () {
+  //buy the product with the size
   this.quantity = this.quantity - 1;
-  next();
 };
 
-sizeSchema.methods.addSize = async function () {
+sizeSchema.methods.addSize = function () {
   this.quantity = this.quantity + 1;
-  next();
 };
-
 
 productSchema.methods.addToCard = async function (sizeNumber, userId) {
   cards.add(new userProdouctSchema(userId, sizeNumber));
-}
-
-
+};
 
 module.exports = mongoose.model('Product', productSchema);
