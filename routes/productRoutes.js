@@ -14,13 +14,8 @@ router.post(
     '/create', authController.protect, productController.createProduct
 );
 
-//search product
-router.post('/search', productController.getProductsSearch);
-
 // cart user
 router.post('/cart', authController.cart);
-
-
 
 router
     .route('/:id')
