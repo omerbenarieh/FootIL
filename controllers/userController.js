@@ -1,9 +1,8 @@
 const User = require('../models/userModel');
+const AppError = require('../utils/appError');
 
 exports.getAllUsers = async (req, res) => {
-  let users;
-  if (req.query) users = await User.find(req.query).select('-__v');
-  else users = await User.find({ active: true }).select('-__v');
+  const users = await User.find().select('-__v');
   res.status(200).json({
     status: 'success',
     data: {
@@ -35,6 +34,6 @@ exports.updateUser = async (req, res) => {
 
 exports.deleteUser = async (req, res) => {
   const id = req.params.id;
-  await User.findByIdAndUpdate(id, { active: false }, { runValidators: true });
+  await User.findByIdAndDelete(id);
   res.status(410).json();
 };

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
@@ -93,6 +94,7 @@ const userSchema = new mongoose.Schema({
 
 });
 
+// Hashing the password when user created or when password is changed
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
   this.password = await bcrypt.hash(this.password, 12);
@@ -101,6 +103,7 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
+// Check if the hashed input password is the corresponding DB hashed password
 userSchema.methods.correctPassword = async function (password, hashPassword) {
   return await bcrypt.compare(password, hashPassword);
 };

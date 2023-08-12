@@ -1,5 +1,5 @@
-const Product = require('../models/productModel');
 
+const Product = require('../models/productModel');
 exports.getAllProducts = async (req, res) => {
   let products;
   if (req.query) products = await Product.find(req.query).select('-__v');
@@ -10,6 +10,10 @@ exports.getAllProducts = async (req, res) => {
       results: products.length,
       products,
     },
+exports.getAllProducts = (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    data: 'ALL PRODUCTS',
   });
 };
 
