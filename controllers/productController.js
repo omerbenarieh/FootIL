@@ -1,6 +1,7 @@
 const Product = require('../models/productModel');
+const catchAsync = require('../utils/catchAsync');
 
-exports.getAllProducts = async (req, res) => {
+exports.getAllProducts = catchAsync(async (req, res) => {
   let products;
   if (req.query) products = await Product.find(req.query).select('-__v');
   else products = await Product.find({ active: true }).select('-__v');
@@ -11,19 +12,29 @@ exports.getAllProducts = async (req, res) => {
       products,
     },
   });
-};
+});
 
-exports.getProduct = async (req, res) => {
+exports.createProduct = catchAsync(async (req, res, next) => {
+  const newProduct = await Product.create(req.body);
+  const idProduct = newProduct._id;
+
+  res.status(201).json({
+    status: 'success',
+    idProduct,
+    data: newProduct,
+  });
+});
+
+exports.getProduct = catchAsync(async (req, res) => {
   const id = req.params.id;
   const product = await product.findById(id).select('-__v');
   res.status(200).json({
     status: 'success',
     data: product,
   });
-};
+});
 
-
-exports.updateProduct = async (req, res) => {
+exports.updateProduct = catchAsync(async (req, res) => {
   const id = req.params.id;
   const Product = await Product.findByIdAndUpdate(id, req.body, {
     runValidators: true,
@@ -32,16 +43,14 @@ exports.updateProduct = async (req, res) => {
     status: 'success',
     data: user,
   });
-};
+});
 
-exports.deleteProduct = async (req, res) => {
+exports.deleteProduct = catchAsync(async (req, res) => {
   const id = req.params.id;
-  await Product.findByIdAndUpdate(id, { active: false }, { runValidators: true });
+  await Product.findByIdAndUpdate(
+    id,
+    { active: false },
+    { runValidators: true }
+  );
   res.status(410).json();
-};
-
-
-exports.updateProducts = (req, res) => {
-  res.send('Update Product');
-};
-// TODO
+});
