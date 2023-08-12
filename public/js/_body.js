@@ -33,4 +33,12 @@ function loginBody() {
   return body;
 }
 
+
+function productCard() {
+  const body = {
+    name: $('productName').val(),
+    photo: $('#image').val(),
+    price: $('#price').val(),
+  };
+}
 export { signupBody, loginBody };

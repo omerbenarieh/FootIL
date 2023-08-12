@@ -89,6 +89,9 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 500,
   },
+
+
+
 });
 
 // Hashing the password when user created or when password is changed

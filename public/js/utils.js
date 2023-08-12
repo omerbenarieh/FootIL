@@ -30,6 +30,21 @@ class Utils {
     this.displayForm('cur-user');
   }
 
+
+  displayHomePage(userId) {//needs to complete //TODO
+
+  }
+
+  displaySearchItems(searchString) {//needs to complete //TODO
+
+  }
+
+  displayCardPage(userId) {//needs to complete//TODO
+
+  }
+
+=======
+
   displayLoginError(msg) {
     alert(msg);
     this.clearFields('email', 'password');
