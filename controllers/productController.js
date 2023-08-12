@@ -40,7 +40,7 @@ exports.deleteProduct = async (req, res) => {
   res.status(410).json();
 };
 
-=======
+
 exports.updateProducts = (req, res) => {
   res.send('Update Product');
 };

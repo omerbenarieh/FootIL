@@ -43,8 +43,6 @@ class Utils {
 
   }
 
-=======
-
   displayLoginError(msg) {
     alert(msg);
     this.clearFields('email', 'password');
