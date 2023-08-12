@@ -17,18 +17,34 @@
                 <img src="logo.png" alt="Logo">
             </div>
             <nav class="user-options">
-                <a href="login.ejs"><img src="user-icon.png" alt="User"></a>
-                <a href="cart.ejs"><img src="cart-icon.png" alt="Cart"></a>
+                <form method="get" action="/">
+                    <button type="submit" class="nav-button">
+                        <img src="user-icon.png" alt="User">
+                    </button>
+                </form>
+
+                <form method="get" action="/cart">
+                    <button type="submit" class="nav-button">
+                        <img src="cart-icon.png" alt="Cart">
+                    </button>
+                </form>
             </nav>
         </header>
 
         <nav class="category-navigation">
-            <ul>
-                <li><a href="#">Men</a></li>
-                <li><a href="#">Women</a></li>
-                <li><a href="#">Unisex</a></li>
-                <li><a href="#">Children</a></li>
-            </ul>
+            <form method="get" action="/">
+                <input type="text" name="search" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+            <form method="get" action="/category">
+                <select name="category">
+                    <option value="">All</option>
+                    <option value="men">Men</option>
+                    <option value="women">Women</option>
+                    <!-- Add more categories as needed -->
+                </select>
+                <button type="submit">Filter</button>
+            </form>
         </nav>
     </form>
     <form id="search-products-form">
@@ -36,8 +52,7 @@
             <input type="text" placeholder="Search...">
         </div>
         <main class="product-display">
-            <!-- Loop through products and display them in rows of four -->
-            <!-- Example product card structure (replace with actual product data) -->
+            <!-- need to implemnt the render from the data base -->
             <div class="product-card">
                 <img src="product-image.jpg" alt="Product">
                 <h3>Product Name</h3>
