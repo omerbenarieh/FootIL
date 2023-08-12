@@ -18,7 +18,7 @@ const productSchema = mongoose.Schema({
   productName: String,
 
   produuctId: {
-    type: Number,
+    type: String,
     require: true,
     trim: true,
     unique: true,
@@ -32,7 +32,7 @@ const productSchema = mongoose.Schema({
   },
 
   image: {
-    type: String,
+    type: Image,
     default: 'default-img.jpg',
   },
 

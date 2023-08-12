@@ -13,6 +13,11 @@ exports.getAllProducts = async (req, res) => {
   });
 };
 
+exports.getProductsSearch = async (req, res) => {
+  let prodoucts;
+
+}
+
 exports.getProduct = async (req, res) => {
   const id = req.params.id;
   const product = await product.findById(id).select('-__v');

@@ -12,6 +12,9 @@ module.exports = router;
 // Creating product
 router.post('/addProduct', authController.addProduct);
 
+//search product
+router.post('/search', productController.getProductsSearch);
+
 // cart user
 router.post('/cart', authController.cart);
 

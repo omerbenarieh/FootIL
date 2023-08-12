@@ -61,3 +61,20 @@ exports.protect = catchAsync(async (req, res, next) => {
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
   next();
 });
+
+
+//create new product 
+//TODO
+exports.createProduct = catchAsync(async (req, res, next) => {
+  // Get user ID from the token and check if they have admin permission
+
+  const newProduct = await Product.create(req.body);
+
+  const idProduct = newUser._id;
+
+  res.status(201).json({
+    status: 'success',
+    idProduct,
+    data: newProduct,
+  });
+});
