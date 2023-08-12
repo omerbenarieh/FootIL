@@ -30,6 +30,7 @@ class Utils {
     this.displayForm('cur-user');
   }
 
+
   displayHomePage(userId) {//needs to complete //TODO
 
   }
@@ -41,6 +42,8 @@ class Utils {
   displayCardPage(userId) {//needs to complete//TODO
 
   }
+
+=======
 
   displayLoginError(msg) {
     alert(msg);

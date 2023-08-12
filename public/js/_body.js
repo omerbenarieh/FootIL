@@ -33,6 +33,7 @@ function loginBody() {
   return body;
 }
 
+
 function productCard() {
   const body = {
     name: $('productName').val(),
@@ -40,7 +41,4 @@ function productCard() {
     price: $('#price').val(),
   };
 }
-
-
-
 export { signupBody, loginBody };
