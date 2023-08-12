@@ -13,6 +13,7 @@ const userProdouctSchema = new mongoose.Schema({//product card schema for users 
 
 });
 
+
 // TODO
 const productSchema = mongoose.Schema({
   productName: String,
@@ -51,6 +52,7 @@ const productSchema = mongoose.Schema({
 });
 
 
+
 //size schema methods
 
 sizeSchema.methods.buy = async function () {//buy the product with the size 
@@ -67,6 +69,7 @@ sizeSchema.methods.addSize = async function () {
 productSchema.methods.addToCard = async function (sizeNumber, userId) {
   cards.add(new userProdouctSchema(userId, sizeNumber));
 }
+
 
 
 module.exports = mongoose.model('Product', productSchema);

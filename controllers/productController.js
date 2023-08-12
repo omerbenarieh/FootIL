@@ -13,6 +13,7 @@ exports.getAllProducts = async (req, res) => {
   });
 };
 
+
 exports.getProduct = async (req, res) => {
   const id = req.params.id;
   const product = await product.findById(id).select('-__v');
@@ -40,3 +41,8 @@ exports.deleteProduct = async (req, res) => {
   res.status(410).json();
 };
 
+=======
+exports.updateProducts = (req, res) => {
+  res.send('Update Product');
+};
+// TODO

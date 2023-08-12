@@ -1,5 +1,7 @@
 const User = require('../models/userModel');
+
 const Product = require('../models/productModel');
+
 const jwt = require('jsonwebtoken');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
