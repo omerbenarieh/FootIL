@@ -43,7 +43,7 @@ class Utils {
 
   }
 
-=======
+
 
   displayLoginError(msg) {
     alert(msg);
