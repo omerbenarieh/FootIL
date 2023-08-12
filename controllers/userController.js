@@ -26,6 +26,7 @@ exports.updateUser = async (req, res) => {
   const user = await User.findByIdAndUpdate(id, req.body, {
     runValidators: true,
   });
+
   res.status(204).json({
     status: 'success',
     data: user,
