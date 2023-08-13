@@ -13,7 +13,6 @@ const userProdouctSchema = new mongoose.Schema({//product card schema for users 
 
 });
 
-
 // TODO
 const productSchema = mongoose.Schema({
   productName: String,
@@ -33,7 +32,7 @@ const productSchema = mongoose.Schema({
   },
 
   image: {
-    type: Image,
+    type: String,
     default: 'default-img.jpg',
   },
 
