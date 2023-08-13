@@ -1,3 +1,4 @@
+
 const Product = require('../models/productModel');
 const catchAsync = require('../utils/catchAsync');
 
@@ -54,3 +55,14 @@ exports.deleteProduct = catchAsync(async (req, res) => {
   );
   res.status(410).json();
 });
+
+exports.getAllProducts = (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    data: 'ALL PRODUCTS',
+  });
+};
+exports.updateProducts = (req, res) => {
+  res.send('Update Product');
+};
+
