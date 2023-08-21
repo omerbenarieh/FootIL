@@ -14,10 +14,10 @@ async function signup(e) {
     ContentType: 'application/json',
     data: signupBody(),
     success: function (data) {
-      console.log(data);
       token = data.token;
-      const username = data.user.name.split(' ')[0];
-      console.log(username);
+      const isAdmin = data.user.role === 'admin';
+      const user = { isLoggedIn: true, isAdmin };
+      localStorage.setItem('user', JSON.stringify(user));
       window.location.href = 'index.html';
     },
     error: function (error) {
