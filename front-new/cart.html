@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Untitled</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.reflowhq.com/v2/toolkit.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/Card-Carousel-slider.css">
+    <link rel="stylesheet" href="assets/css/Card-Carousel.css">
     <link rel="stylesheet" href="assets/css/Footer-Multi-Column-icons.css">
+    <link rel="stylesheet" href="assets/css/gift-product-long.css">
     <link rel="stylesheet" href="assets/css/Team-images.css">
 </head>
 
@@ -20,14 +22,72 @@
                     <li class="nav-item"><a class="nav-link active" href="/">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"></a></li>
                     <li class="nav-item"><a class="nav-link" href="#"></a></li>
-                </ul><a class="btn btn-primary mx-auto" role="button" href="/cart.html">see cart</a>
+                </ul><a class="btn btn-primary ms-auto" role="button" href="/cart.html">see cart</a>
             </div>
-            <div data-reflow-type="auth-button"></div>
         </div>
     </nav>
+    <div class="content">
+        <div class="row g-0">
+            <div class="col-md-12 col-lg-8" style="margin-left: 10px;padding-right: 10px;">
+                <div class="items">
+                    <div class="product">
+                        <div class="row justify-content-center align-items-center" style="margin-right: 0px;margin-left: 0px;">
+                            <div class="col-md-3" style="padding-right: 0px;">
+                                <div class="product-image"><img class="img-fluid d-block mx-auto image" src="assets/img/nike/WhatsApp%20Image%202023-08-21%20at%2015.04.07%20(2).jpeg"></div>
+                            </div>
+                            <div class="col-md-5 product-info"><a class="product-name" href="#">NIKE DUNK SB LOW</a>
+                                <div class="product-specs">
+                                    <div><span>Size:&nbsp;</span><span class="value">45</span></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-2 quantity"><label class="form-label d-none d-md-block" for="quantity">Quantity</label><input type="number" id="number-1" class="form-control quantity-input" value="1"></div>
+                            <div class="col-6 col-md-2 price"><span id="shoe-price1">$450</span></div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-md-3">
+                                <div class="product-image"><img class="img-fluid d-block mx-auto image" src="assets/img/nike/WhatsApp%20Image%202023-08-21%20at%2015.04.05.jpeg"></div>
+                            </div>
+                            <div class="col-md-5 product-info"><a class="product-name" href="#">NIKE JORDAN 1 LOW</a>
+                                <div class="product-specs">
+                                    <div><span>Size:&nbsp;</span><span class="value">42.5</span></div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-2 quantity"><label class="form-label d-none d-md-block" for="quantity">Quantity</label><input type="number" id="number-2" class="form-control quantity-input" value="1"></div>
+                            <div class="col-6 col-md-2 price"><span id="shoe-price2">$120</span></div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-md-3">
+                                <div class="product-image"><img class="img-fluid d-block mx-auto image" src="assets/img/adidas/number12_adidas_yeezy_500.png"></div>
+                            </div>
+                            <div class="col-md-5 product-info"><a class="product-name" href="#">ADIDAS YEEZY 500</a>
+                                <div class="product-specs">
+                                    <div><span>Size:&nbsp;</span><span class="value">42 2/3</span></div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-2 quantity"><label class="form-label d-none d-md-block" for="quantity">Quantity</label><input type="number" id="number-3" class="form-control quantity-input" value="1"></div>
+                            <div class="col-6 col-md-2 price"><span id="shoe-price1">$180</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <div class="summary" style="margin-right: 10px;margin-left: 10px;margin-top: 10px;margin-bottom: 10px;">
+                    <h3>Summary</h3>
+                    <h4><span class="text">Subtotal:&nbsp;</span><span id="total-price" class="price">$750</span></h4>
+                    <h4><span class="text"></span></h4>
+                    <h4><span class="text">Shipping:&nbsp;</span><span id="shipping-price" class="price">$20</span></h4>
+                    <h4 style="margin-bottom: 12px;"><span class="text">Total:&nbsp;</span><span id="total-price" class="price">$770</span></h4><a class="btn btn-primary btn-lg text-center text-bg-info d-block w-100" role="button" href="/success.html">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <h1 style="margin-bottom: 25px;"></h1>
-        <div data-reflow-type="shopping-cart" data-reflow-success-url="/success.html" data-reflow-cancel-url="/cancel.html" style="margin-right: 5px;margin-left: 5px;margin-bottom: 5px;"></div>
         <section class="py-4 py-xl-5">
             <div class="container">
                 <div class="text-dark bg-light border rounded border-0 border-light d-flex flex-column justify-content-between align-items-center flex-lg-row p-4 p-lg-5" data-bs-theme="light">
@@ -63,8 +123,8 @@
         </section>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdn.reflowhq.com/v2/toolkit.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/Card-Carousel-slider.js"></script>
 </body>
 
 </html>
