@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 // Set the ejs View Engine
 // app.set('view engine', 'ejs');
 // app.engine('ejs', require('ejs').__express);
-app.use(express.static(path.join(__dirname, 'front')));
+app.use(express.static(path.join(__dirname, 'front-new')));
 
 // Root
 app.get('/', (req, res) => {
