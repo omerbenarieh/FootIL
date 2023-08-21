@@ -17,11 +17,8 @@ const createSendToken = (user, statusCode, res) => {
     ),
     httpOnly: true,
   };
-
   res.cookie('jwt', token, coookieOptions);
-
   user.password = undefined;
-
   res.status(statusCode).json({
     status: 'success',
     token,
