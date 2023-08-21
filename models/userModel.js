@@ -60,38 +60,10 @@ const userSchema = new mongoose.Schema({
     default: 'user',
   },
 
-  city: {
-    type: String,
-    default: 'Tel Aviv',
-  },
-
-  street: {
-    type: String,
-    default: 'Florentin',
-  },
-
-  houseNumber: {
-    type: Number,
-    default: 10,
-  },
-
-  floor: {
-    type: Number,
-    default: 10,
-  },
-
-  apartment: {
-    type: Number,
-    default: 10,
-  },
-
   balance: {
     type: Number,
     default: 500,
   },
-
-
-
 });
 
 // Hashing the password when user created or when password is changed
