@@ -14,6 +14,7 @@ async function signup(e) {
     ContentType: 'application/json',
     data: signupBody(),
     success: function (data) {
+      console.log(data);
       token = data.token;
       const username = data.user.name.split(' ')[0];
       console.log(username);
@@ -36,8 +37,8 @@ async function login(e) {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    success: function (user) {
-      console.log(user.user);
+    success: function (data) {
+      console.log(data.user);
       token = data.token;
       window.location.href = 'index.html';
     },
