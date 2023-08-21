@@ -15,12 +15,6 @@ function signupBody() {
     password: $('#new_password').val(),
     confirmPassword: $('#confirmPassword').val(),
     image: $('#image').val(),
-    balance: $('#balance').val(),
-    city: $('#city').val(),
-    street: $('#street').val(),
-    houseNumber: $('#houseNumber').val(),
-    floor: $('#floor').val(),
-    apartment: $('#apartment').val(),
   };
   return fieldIsEmpty(body);
 }
@@ -32,7 +26,6 @@ function loginBody() {
   };
   return body;
 }
-
 
 function productCard() {
   const body = {
