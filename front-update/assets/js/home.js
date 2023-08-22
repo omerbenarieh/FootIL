@@ -3,8 +3,19 @@ import { renderProducts } from './renderProcuts.js';
 
 $(document).ready(async function () {
   const res = await getAllProducts();
-  console.log(res.data);
-  renderProducts(res);
+  const products=res.data.products;
+  renderProducts(products);
+  
+
+  // Event listener for company filter
+  $('#company-filter').change(function () {
+    const selectedCompany = $(this).val();
+    if (selectedCompany) {
+      const filteredProducts = products.filter(product => product.company === selectedCompany);
+      renderProducts(filteredProducts);
+    } else 
+        renderProducts(products); 
+  });
 
   const user = JSON.parse(localStorage.getItem('user'));
 

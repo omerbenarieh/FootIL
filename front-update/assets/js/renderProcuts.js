@@ -1,16 +1,17 @@
 function renderProducts(products) {
   const cardContainer = document.getElementById('cards');
+  cardContainer.innerHTML ='';
   let currentCardGroup = null;
-  const productsArray = products.data.products;
 
-  const cardGroup = document.querySelector('.card-group');
-
-  productsArray.forEach((product, index) => {
+  products.forEach((product, index) => {
     const company = product.company;
     const name = product.name;
     const image = `assets/img/${company}/${product.image}`;
     const size = product.size;
     const price = product.price;
+
+
+
 
     const card = `
     <div class="card">
