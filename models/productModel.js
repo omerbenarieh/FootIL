@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 
 const productSchema = new mongoose.Schema({
   company: { type: String, enum: ['Nike', 'Adidas'], required: true },
-
+  name: String,
   size: {
     type: Number,
     validate: {
