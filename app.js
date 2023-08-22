@@ -18,16 +18,12 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Set the ejs View Engine
-// app.set('view engine', 'ejs');
-// app.engine('ejs', require('ejs').__express);
-app.use(express.static(path.join(__dirname, 'front-update')));
-
 // Root
 app.get('/', (req, res) => {
-  res.render('index');
+  res.sendFile(__dirname + '/front-update/home.html');
 });
 
+app.use(express.static(path.join(__dirname, 'front-update')));
 // Routers
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
