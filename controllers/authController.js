@@ -19,9 +19,7 @@ const createSendToken = (user, statusCode, res) => {
   };
 
   res.cookie('jwt', token, coookieOptions);
-
   user.password = undefined;
-
   res.status(statusCode).json({
     status: 'success',
     token,
@@ -82,5 +80,6 @@ exports.protect = catchAsync(async (req, res, next) => {
 exports.isAdmin = (req, res, next) => {
   if (!req.user || req.user.role !== 'admin')
     return next(new AppError('This Route is only For Logged in Admins.', 404));
+  // console.log(req.user);
   next();
 };
