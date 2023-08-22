@@ -1,6 +1,5 @@
 import { signupBody, loginBody } from './bodymaker.js';
 import { renderProducts } from './renderProcuts.js';
-
 const url = 'http://localhost:3000/api';
 
 let token;
@@ -56,19 +55,21 @@ async function login(e) {
 
 async function getAllProducts(e) {
   const curUrl = `${url}/products`;
-  $.ajax({
-    type: 'GET',
-    url: curUrl,
-    ContentType: 'application/json',
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    success: function (products) {
-      renderProducts(products);
-    },
-    error: function (error) {
-      alert(error.responseText);
-    },
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: 'GET',
+      url: curUrl,
+      ContentType: 'application/json',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      success: function (products) {
+        resolve(products); // Resolve the promise with the fetched products
+      },
+      error: function (error) {
+        reject(error); // Reject the promise with the error
+      },
+    });
   });
 }
 
