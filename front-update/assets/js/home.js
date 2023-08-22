@@ -1,7 +1,10 @@
 import { getAllProducts } from './ajax.js';
+import { renderProducts } from './renderProcuts.js';
 
-$(document).ready(function () {
-  getAllProducts();
+$(document).ready(async function () {
+  const res = await getAllProducts();
+  console.log(res.data);
+  renderProducts(res);
 
   const user = JSON.parse(localStorage.getItem('user'));
 
