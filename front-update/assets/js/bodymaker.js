@@ -17,4 +17,13 @@ function loginBody() {
   return body;
 }
 
-export { signupBody, loginBody };
+function productBody() {
+  const body = {
+    name: $('#product-name').val(),
+    price: $('#product-price').val(),
+    image: $('#product-img').val(),
+  };
+  return body();
+}
+
+export { signupBody, loginBody, productBody };
