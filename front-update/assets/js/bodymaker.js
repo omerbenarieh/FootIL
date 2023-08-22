@@ -1,3 +1,5 @@
+console.log($('#confirmPassword').val());
+
 function signupBody() {
   const body = {
     name: $('#name').val(),

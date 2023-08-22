@@ -47,6 +47,7 @@ async function login(e) {
       window.location.href = 'index.html';
     },
     error: function (error) {
+      console.log(error);
       alert(error.responseText);
     },
   });
