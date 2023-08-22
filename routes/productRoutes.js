@@ -3,7 +3,6 @@ const productController = require('../controllers/productController');
 const authController = require('../controllers/authController');
 
 const router = express.Router();
-// router.use(authController.protect, authController.isAdmin);
 
 router
   .route('/')
@@ -14,6 +13,10 @@ router
   .route('/:id')
   .get(productController.getProduct)
   .patch(productController.updateProduct)
-  .delete(productController.deleteProduct);
+  .delete(
+    authController.protect,
+    authController.isAdmin,
+    productController.deleteProduct
+  );
 
 module.exports = router;
