@@ -84,7 +84,7 @@
         </div>
       </div>
     </nav>
-    <div class="container text-center">
+    <div class="container text-center" id="container">
       <h1 style="margin-bottom: 25px">OUR products</h1>
       <iframe
         src="https://www.youtube.com/watch?v=VnE7m8JI7MY"
@@ -94,7 +94,8 @@
         width="800"
         height="300"
       ></iframe>
-      <div class="filter">
+
+      <div class="filter" id="filter">
         <form>
           <select>
             <option value="">Company</option>
@@ -116,125 +117,9 @@
           </select>
         </form>
       </div>
+      <div id="cards"></div>
       <div data-reflow-type="product-search" style="margin-bottom: 10px"></div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-body">
-            <img
-              id="product-img"
-              src="assets/img/adidas/number13_adidas_yeezy_500.png"
-              style="margin-left: 0px; height: 150px; width: 200px"
-            />
-            <h3 class="text-center card-title" id="product-name">
-              adidas yeezy 500
-            </h3>
-            <h4 class="text-center" id="product-price">100$</h4>
-            <div class="filter">
-              <form>
-                <select id="quantity">
-                  <option value="">Select Quantity</option>
-                  <option value="">1</option>
-                  <option value="">2</option>
-                  <option value="">3</option>
-                  <option value="">4</option>
-                  <option value="">5</option>
-                </select>
-                <select id="size">
-                  <option value="">Select Size</option>
-                  <option value="">42</option>
-                  <option value="">43</option>
-                  <option value="">44</option>
-                  <option value="">45</option>
-                </select>
-              </form>
-            </div>
-            <button
-              class="btn btn-primary"
-              id="add-to-cart-btn"
-              type="button"
-              style="margin-left: 14px"
-            >
-              add to cart
-            </button>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <img
-              style="margin-left: 0px; width: 200px; height: 150px"
-              src="assets/img/adidas/number14_adidas_yeezy_700.png"
-            />
-            <h3 class="text-center card-title">adidas yeezy 700</h3>
-            <h4 class="text-center">200$</h4>
-            <div class="filter">
-              <form>
-                <select>
-                  <option value="">Select Quantity</option>
-                  <option value="">1</option>
-                  <option value="">2</option>
-                  <option value="">3</option>
-                  <option value="">4</option>
-                  <option value="">5</option>
-                </select>
-                <select>
-                  <option value="">Select Size</option>
-                  <option value="">42</option>
-                  <option value="">43</option>
-                  <option value="">44</option>
-                  <option value="">45</option>
-                </select>
-              </form>
-            </div>
-            <button
-              class="btn btn-primary"
-              type="button"
-              style="margin-left: 14px"
-            >
-              add to cart
-            </button>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body text-center">
-            <img
-              class="d-flex d-md-flex justify-content-center align-items-center"
-              src="assets/img/adidas/number15_adidas_yeezy_700_v3.png"
-              width="236"
-              height="162"
-              style="margin-left: 0px"
-            />
-            <h3 class="text-center card-title">adidas yeezy 700</h3>
-            <p class="card-text"></p>
-            <h4 class="text-center">300$</h4>
-            <div class="filter">
-              <form>
-                <select>
-                  <option value="">Select Quantity</option>
-                  <option value="">1</option>
-                  <option value="">2</option>
-                  <option value="">3</option>
-                  <option value="">4</option>
-                  <option value="">5</option>
-                </select>
-                <select>
-                  <option value="">Select Size</option>
-                  <option value="">42</option>
-                  <option value="">43</option>
-                  <option value="">44</option>
-                  <option value="">45</option>
-                </select>
-              </form>
-            </div>
-            <button
-              class="btn btn-primary"
-              type="button"
-              style="margin-left: 14px"
-            >
-              add to cart
-            </button>
-          </div>
-        </div>
-      </div>
+      <!-- <div class="card-group"></div> -->
       <section class="py-4 py-xl-5">
         <div class="container">
           <div

@@ -1,4 +1,8 @@
+import { getAllProducts } from './ajax.js';
+
 $(document).ready(function () {
+  getAllProducts();
+
   const user = JSON.parse(localStorage.getItem('user'));
 
   // Check if user is loggedIn

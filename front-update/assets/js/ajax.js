@@ -1,4 +1,5 @@
 import { signupBody, loginBody } from './bodymaker.js';
+import { renderProducts } from './renderProcuts.js';
 
 const url = 'http://localhost:3000/api';
 
@@ -53,4 +54,22 @@ async function login(e) {
   });
 }
 
-export { login, signup };
+async function getAllProducts(e) {
+  const curUrl = `${url}/products`;
+  $.ajax({
+    type: 'GET',
+    url: curUrl,
+    ContentType: 'application/json',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    success: function (products) {
+      renderProducts(products);
+    },
+    error: function (error) {
+      alert(error.responseText);
+    },
+  });
+}
+
+export { login, signup, getAllProducts };

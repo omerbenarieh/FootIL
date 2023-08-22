@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
-  company: { type: String, enum: ['Nike', 'Adidas'], required: true },
+  company: { type: String, enum: ['nike', 'adidas'], required: true },
   name: String,
   size: {
     type: Number,
