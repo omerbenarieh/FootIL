@@ -1,10 +1,11 @@
-import { attachAddToCart } from '../handlers/addToCart.js';
+import { addProduct } from '../ajax/addProduct.js';
 
 function renderProducts(products) {
   const cardContainer = document.getElementById('cards');
   cardContainer.innerHTML = '';
   let currentCardGroup = null;
-  let i;
+  let j = 0;
+  const id = [];
   products.forEach((product, index) => {
     const company = product.company;
     const name = product.name;
@@ -49,9 +50,16 @@ function renderProducts(products) {
     if (currentCardGroup) {
       currentCardGroup.innerHTML += card;
     }
-    i = index;
+    j++;
+    id.push(product._id);
   });
-  attachAddToCart(i);
+
+  for (let i = 0; i < j; i++) {
+    $(`#add-${i}`).click(function (e) {
+      e.preventDefault();
+      addProduct(e, id[i]);
+    });
+  }
 }
 
 export { renderProducts };

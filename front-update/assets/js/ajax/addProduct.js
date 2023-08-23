@@ -1,10 +1,11 @@
 import { productBody } from './bodymaker.js';
 
-async function addProduct(e) {
+async function addProduct(e, id) {
   const index = e.target.id.charAt(e.target.id.length - 1);
+  $(`#add-${index}`).prop('disabled', true);
   $.ajax({
-    type: 'POST',
-    url: 'http://localhost:3000/api/products',
+    type: 'GET',
+    url: `http://localhost:3000/api/products/${id}`,
     data: productBody(index),
     ContentType: 'application/json',
     success: function (product) {

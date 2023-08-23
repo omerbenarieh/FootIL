@@ -1,10 +1,11 @@
 // Imports
 import { getAllProducts } from './ajax/getAllProducts.js';
-import { renderProducts } from './handlers/renderProcuts.js';
+import { renderProducts } from './handlers/renderProducts.js';
 
 $(document).ready(async function () {
   const res = await getAllProducts();
   const products = res.data.products;
+
   renderProducts(products);
 
   // Filters
@@ -26,6 +27,7 @@ $(document).ready(async function () {
   $('#logout-btn').click(function () {
     localStorage.removeItem('user');
     localStorage.removeItem('products');
+    localStorage.removeItem('token');
     $('#signup-btn').show();
     $('#login-btn').show();
     $('#admin-page').addClass('visually-hidden');
