@@ -2,12 +2,14 @@ function renderCart({ products }) {
   const container = document.getElementById('items');
   const summaryContainer = document.getElementById('summary');
   container.innerHTML = '';
+  let j = 0;
   products.forEach((product, index) => {
     const company = product.company;
     const name = product.name;
     const size = product.size;
     const price = product.price;
     const image = `assets/img/${company}/${product.image}`;
+
     const card = `
     <div class="product">
       <div class="row justify-content-center align-items-center">
@@ -37,7 +39,7 @@ function renderCart({ products }) {
         <div class="col-6 col-md-2 quantity">
           <form>
             <select id="product-quantity-${index}">
-              <option value="">Quantity</option>
+              <option value="Quantity">Quantity</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -52,6 +54,7 @@ function renderCart({ products }) {
       </div>
     </div>`;
     container.innerHTML += card;
+    j++;
   });
 
   const totalCost = products.reduce(
