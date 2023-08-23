@@ -1,4 +1,3 @@
-
 const Product = require('../models/productModel');
 const catchAsync = require('../utils/catchAsync');
 
@@ -17,18 +16,15 @@ exports.getAllProducts = catchAsync(async (req, res) => {
 
 exports.createProduct = catchAsync(async (req, res, next) => {
   const newProduct = await Product.create(req.body);
-  const idProduct = newProduct._id;
-
   res.status(201).json({
     status: 'success',
-    idProduct,
     data: newProduct,
   });
 });
 
 exports.getProduct = catchAsync(async (req, res) => {
   const id = req.params.id;
-  const product = await product.findById(id).select('-__v');
+  const product = await Product.findById(id).select('-__v');
   res.status(200).json({
     status: 'success',
     data: product,
@@ -37,32 +33,17 @@ exports.getProduct = catchAsync(async (req, res) => {
 
 exports.updateProduct = catchAsync(async (req, res) => {
   const id = req.params.id;
-  const Product = await Product.findByIdAndUpdate(id, req.body, {
+  const product = await Product.findByIdAndUpdate(id, req.body, {
     runValidators: true,
   });
   res.status(204).json({
     status: 'success',
-    data: user,
+    data: product,
   });
 });
 
 exports.deleteProduct = catchAsync(async (req, res) => {
   const id = req.params.id;
-  await Product.findByIdAndUpdate(
-    id,
-    { active: false },
-    { runValidators: true }
-  );
+  await Product.findByIdAndDelete(id);
   res.status(410).json();
 });
-
-exports.getAllProducts = (req, res) => {
-  res.status(200).json({
-    status: 'success',
-    data: 'ALL PRODUCTS',
-  });
-};
-exports.updateProducts = (req, res) => {
-  res.send('Update Product');
-};
-

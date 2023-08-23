@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
-const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
@@ -60,38 +59,11 @@ const userSchema = new mongoose.Schema({
     default: 'user',
   },
 
-  city: {
-    type: String,
-    default: 'Tel Aviv',
-  },
-
-  street: {
-    type: String,
-    default: 'Florentin',
-  },
-
-  houseNumber: {
-    type: Number,
-    default: 10,
-  },
-
-  floor: {
-    type: Number,
-    default: 10,
-  },
-
-  apartment: {
-    type: Number,
-    default: 10,
-  },
-
   balance: {
     type: Number,
     default: 500,
   },
-
-
-
+  reservations: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reservation' }],
 });
 
 // Hashing the password when user created or when password is changed
