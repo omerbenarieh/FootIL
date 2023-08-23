@@ -25,6 +25,7 @@ $(document).ready(async function () {
 
   $('#logout-btn').click(function () {
     localStorage.removeItem('user');
+    localStorage.removeItem('products');
     $('#signup-btn').show();
     $('#login-btn').show();
     $('#admin-page').addClass('visually-hidden');

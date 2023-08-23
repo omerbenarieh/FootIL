@@ -11,7 +11,7 @@ router
 
 router
   .route('/:id')
-  .get(productController.getProduct)
+  .get(authController.protect, productController.getProduct)
   .patch(productController.updateProduct)
   .delete(
     authController.protect,

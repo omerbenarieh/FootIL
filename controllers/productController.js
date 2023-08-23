@@ -16,7 +16,6 @@ exports.getAllProducts = catchAsync(async (req, res) => {
 
 exports.createProduct = catchAsync(async (req, res, next) => {
   const newProduct = await Product.create(req.body);
-
   res.status(201).json({
     status: 'success',
     data: newProduct,

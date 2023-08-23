@@ -1,8 +1,10 @@
+import { attachAddToCart } from '../handlers/addToCart.js';
+
 function renderProducts(products) {
   const cardContainer = document.getElementById('cards');
   cardContainer.innerHTML = '';
   let currentCardGroup = null;
-
+  let i;
   products.forEach((product, index) => {
     const company = product.company;
     const name = product.name;
@@ -13,36 +15,23 @@ function renderProducts(products) {
     <div class="card">
     <div class="card-body">
       <img
-        id="product-img"
+        id="product-img-${index}"
         src="${image}"
         style="margin-left: 0px; height: 150px; width: 200px"
       />
-      <h3 class="text-center card-title" id="product-name">
-        ${name}
+      <h3 class="text-center card-title" id="product-company-${index}">
+        ${company}
       </h3>
-      <h4 class="text-center" id="product-price">${price}$</h4>
+      <h4 class="text-center card-title" id="product-name-${index}">
+        ${name}
+      </h4>
+      <h4 class="text-center" id="product-price-${index}">${price}$</h4>
+      <h5 id="product-size-${index}">size ${product.size}</h5>
       <div class="filter">
-        <form>
-          <select id="quantity">
-            <option value="">Select Quantity</option>
-            <option value="">1</option>
-            <option value="">2</option>
-            <option value="">3</option>
-            <option value="">4</option>
-            <option value="">5</option>
-          </select>
-          <select id="size">
-            <option value="">Select Size</option>
-            <option value="">42</option>
-            <option value="">43</option>
-            <option value="">44</option>
-            <option value="">45</option>
-          </select>
-        </form>
       </div>
       <button
         class="btn btn-primary"
-        id="add-to-cart-btn"
+        id="add-${index}"
         type="button"
         style="margin-left: 14px"
       >
@@ -60,7 +49,9 @@ function renderProducts(products) {
     if (currentCardGroup) {
       currentCardGroup.innerHTML += card;
     }
+    i = index;
   });
+  attachAddToCart(i);
 }
 
 export { renderProducts };
