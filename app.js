@@ -4,8 +4,11 @@ const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
 
+// Routers
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
+const reservationRouter = require('./routes/reservationRoutes');
+
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
@@ -27,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'front-update')));
 // Routers
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
+app.use('/api/reservations', reservationRouter);
 
 // Handling Undefined Routes
 app.all('*', (req, res, next) => {

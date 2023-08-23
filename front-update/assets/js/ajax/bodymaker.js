@@ -17,4 +17,19 @@ function loginBody() {
   return body;
 }
 
-export { signupBody, loginBody };
+function productBody(index) {
+  const company = $(`#product-company-${index}`).text().trim();
+  const name = $(`#product-name-${index}`).text().trim();
+  const size = parseInt($(`#product-size-${index}`).text().split(' ')[1]);
+  const price = parseInt($(`#product-price-${index}`).text());
+  const image = $(`#product-img-${index}`).attr('src');
+  return {
+    company,
+    name,
+    size,
+    price,
+    image,
+  };
+}
+
+export { signupBody, loginBody, productBody };
