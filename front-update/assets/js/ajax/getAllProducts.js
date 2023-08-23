@@ -1,7 +1,6 @@
 async function getAllProducts(e) {
   const url = 'http://localhost:3000/api/products';
   const token = JSON.parse(localStorage.getItem('token'));
-  console.log(token);
   return new Promise((resolve, reject) => {
     $.ajax({
       type: 'GET',

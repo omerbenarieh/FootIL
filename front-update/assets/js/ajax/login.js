@@ -10,7 +10,6 @@ async function login(e) {
     data: loginBody(),
     ContentType: 'application/json',
     success: function (data) {
-      console.log(data);
       const isAdmin = data.user.role === 'admin';
       const user = { isLoggedIn: true, isAdmin, user: data.user };
       localStorage.setItem('user', JSON.stringify(user));
