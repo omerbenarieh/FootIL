@@ -11,7 +11,7 @@ async function checkout(e, { products }) {
       Authorization: `Bearer ${token}`,
     },
     success: function (data) {
-      console.log(data);
+      window.location.href = 'success.html';
     },
     error: function (error) {
       console.log(error.responseText);
