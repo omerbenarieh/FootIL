@@ -7,8 +7,7 @@ function renderCart({ products }) {
     const name = product.name;
     const size = product.size;
     const price = product.price;
-    const image = product.image;
-
+    const image = `assets/img/${company}/${product.image}`;
     const card = `
     <div class="product">
       <div class="row justify-content-center align-items-center">
@@ -37,8 +36,8 @@ function renderCart({ products }) {
         </div>
         <div class="col-6 col-md-2 quantity">
           <form>
-            <select id="product-quantity-${index}" class="w-50">
-              <option value="">Select Quantity</option>
+            <select id="product-quantity-${index}">
+              <option value="">Quantity</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -75,7 +74,7 @@ function renderCart({ products }) {
               ><span id="total-price" class="price">$${totalCost}</span>
             </h4>
             <a
-              class="btn btn-primary btn-lg text-center text-bg-info d-block w-25"
+              class="btn btn-primary btn-lg text-center text-bg-info d-block w-75"
               role="button"
               id="checkout-btn"
               >Checkout</a

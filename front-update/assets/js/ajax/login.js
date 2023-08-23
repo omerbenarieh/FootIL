@@ -14,6 +14,7 @@ async function login(e) {
       const user = { isLoggedIn: true, isAdmin, user: data.user };
       localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('products', JSON.stringify({ products: [] }));
+      localStorage.setItem('token', JSON.stringify(data.token));
       window.location.href = 'home.html';
     },
     error: function (error) {
