@@ -1,7 +1,7 @@
 const Reservation = require('../models/reservationModel.js');
 
 exports.getAllReservation = async (req, res, next) => {
-  const reservations = await Reservation.find();
+  const reservations = await Reservation.find().populate('products');
 
   res.status(200).json({
     staus: 'succes',

@@ -2,8 +2,7 @@ function renderCart({ products }) {
   const container = document.getElementById('items');
   const summaryContainer = document.getElementById('summary');
   container.innerHTML = '';
-  let j = 0;
-  products.forEach((product, index) => {
+  products.forEach(product => {
     const company = product.company;
     const name = product.name;
     const size = product.size;
@@ -45,7 +44,6 @@ function renderCart({ products }) {
       </div>
     </div>`;
     container.innerHTML += card;
-    j++;
   });
 
   const totalCost = products.reduce(
