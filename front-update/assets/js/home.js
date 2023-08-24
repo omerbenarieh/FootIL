@@ -7,7 +7,6 @@ $(document).ready(async function () {
   const products = res.data.products;
 
   renderProducts(products);
-
   // Filters
   $('#company-filter').change(companyFilter);
   $('#size-filter').change(sizeFilter);
@@ -24,6 +23,7 @@ $(document).ready(async function () {
     $('#logout-btn').removeClass('visually-hidden');
   }
 
+  localStorage.setItem('products', JSON.stringify({ products: [] }));
   $('#cart-btn').click(function (e) {
     e.preventDefault();
     if (!user) {

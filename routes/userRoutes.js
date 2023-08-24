@@ -20,7 +20,7 @@ router.post('/login', authController.login);
 
 router
   .route('/:id')
-  .get(authController.protect, userController.getUser)
+  .get(userController.getUser)
   .patch(authController.protect, userController.updateUser)
   .delete(
     authController.protect,
