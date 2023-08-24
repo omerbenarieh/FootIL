@@ -37,16 +37,7 @@ function renderCart({ products }) {
           </div>
         </div>
         <div class="col-6 col-md-2 quantity">
-          <form>
-            <select id="product-quantity-${index}">
-              <option value="Quantity">Quantity</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </form>
+    
         </div>
         <div class="col-6 col-md-2 price">
           <span id="product-price">$${price}</span>
