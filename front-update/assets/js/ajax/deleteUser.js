@@ -7,12 +7,12 @@ async function deleteUser(id) {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    contentType: 'aplication/json',
-    success: function () {
-      alert('User deleted Successfully ! :)');
+    contentType: 'application/json',
+    success: function (data) {
+      alert(`User has been deleted Successfully ! :)`);
     },
     error: function (error) {
-      alert(error.responseText);
+      console.log(error);
     },
   });
 }
