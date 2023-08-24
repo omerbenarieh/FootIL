@@ -10,9 +10,14 @@ router
   .post(authController.protect, reservationController.createReservation);
 
 router
+  .route('/brand-sales')
+  .get(authController.protect, reservationController.getBrandSales)
+
+router
   .route('/:id')
   .get(reservationController.getReservation)
   .patch(reservationController.updateReservation)
   .delete(reservationController.deleteReservation);
+
 
 module.exports = router;
