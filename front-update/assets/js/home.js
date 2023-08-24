@@ -24,6 +24,14 @@ $(document).ready(async function () {
     $('#logout-btn').removeClass('visually-hidden');
   }
 
+  $('#cart-btn').click(function (e) {
+    e.preventDefault();
+    if (!user) {
+      alert('Please log in :)');
+      window.location.reload();
+    } else window.location.href = '../../cart.html';
+  });
+
   $('#logout-btn').click(function () {
     localStorage.removeItem('user');
     localStorage.removeItem('products');
