@@ -30,7 +30,7 @@
   <body>
     <nav class="navbar navbar-expand-md bg-body">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">shoe IL</a
+        <a class="navbar-brand" href="/home.html">Foot IL</a
         ><button
           data-bs-toggle="collapse"
           class="navbar-toggler"
@@ -65,11 +65,10 @@
       </div>
     </nav>
     <div>
-      <h1 class="text-center" style="margin-bottom: 20px">user Page</h1>
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <h1 class="text-center">MY RESERVATIONS</h1>
+            <h1 class="text-center mb-5" id="user-res"></h1>
             <table
               id="example"
               class="table table-striped table-bordered"
@@ -78,28 +77,18 @@
             >
               <thead>
                 <tr>
-                  <th>Id</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>List Of Products</th>
+                  <th>Number</th>
+                  <th>Date</th>
+                  <th>Shoes</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>49499595</td>
-                  <td>ilay cohen</td>
-                  <td>ilaycohen1998@Gmail.com</td>
-                  <td>list.... do yourself</td>
-                </tr>
-              </tbody>
+              <tbody id="container"></tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/Card-Carousel-slider.js"></script>
+
     <script type="module" src="assets/js/user.js"></script>
   </body>
 </html>
