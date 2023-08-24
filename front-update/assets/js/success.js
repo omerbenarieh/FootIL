@@ -1,11 +1,13 @@
 $(document).ready(function () {
+  const user = JSON.parse(localStorage.getItem('user')).products;
+      console.log(user.name);
+  createPost(`New order has been made by ${user.name} !!`);
   const container = document.getElementById('container');
   container.innerHTML = '';
   const products = JSON.parse(localStorage.getItem('products')).products;
   products.forEach(product => {
     const company = product.company;
     const image = `assets/img/${company}/${product.image}`;
-
     const card = ` 
     <li class="list-group-item">
                 
