@@ -82,7 +82,4 @@ exports.isAdmin = (req, res, next) => {
     return next(new AppError('This Route is only For Logged in Admins.', 404));
   // console.log(req.user);
   next();
-
 };
-
-

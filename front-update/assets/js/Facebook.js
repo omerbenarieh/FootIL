@@ -8,14 +8,12 @@ async function createPost(message) {
     method: 'POST',
     data: {
       message: message,
-      // access_token: pageAccessToken
     },
-    success: function (response) {
-      console.log('Post created successfully', response);
+    success: function () {
+      console.log('Post created successfully :)');
     },
     error: function (error) {
-      console.error('Error creating post:', error);
-      console.log('Error creating post' + error.responseText);
+      alert('Error creating post' + error.responseText);
     },
   });
 }
