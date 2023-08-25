@@ -1,7 +1,14 @@
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync.js');
 exports.getAllUsers = async (req, res) => {
-  const users = await User.find().select('-__v');
+  const users = await User.find()
+    .select('-__v')
+    .populate({
+      path: 'reservations',
+      populate: {
+        path: 'products',
+      },
+    });
   res.status(200).json({
     status: 'success',
     data: {
@@ -13,7 +20,14 @@ exports.getAllUsers = async (req, res) => {
 
 exports.getUser = async (req, res) => {
   const id = req.params.id;
-  const user = await User.findById(id).select('-__v');
+  const user = await User.findById(id)
+    .select('-__v')
+    .populate({
+      path: 'reservations',
+      populate: {
+        path: 'products',
+      },
+    });
   res.status(200).json({
     status: 'success',
     data: user,

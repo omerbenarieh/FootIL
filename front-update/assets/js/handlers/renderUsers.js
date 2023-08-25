@@ -8,12 +8,12 @@ function renderUsers(users) {
     const id = user._id;
     const card = `
     <tr>
-      <td id="user-id-${id}">${id}</td>
-      <td id="user-name-${user.name}">${user.name}</td>
-      <td>${user.email}</td>
-      <td>${user.role}</td>
+      <td id="user-id-${id}" class="text-lowercase">${id}</td>
+      <td id="user-name-${user.name}" class="text-lowercase">${user.name}</td>
+      <td class="text-lowercase">${user.email}</td>
+      <td class="text-lowercase">${user.role}</td>
       <td>
-        <button type="button" class="btn btn-danger delete-btn" data-id="${id}">
+        <button type="button" class="btn btn-danger delete-btn btn-md" data-id="${id}">
           <i
             class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"
           ></i>

@@ -7,7 +7,6 @@ $(document).ready(async function () {
   const products = res.data.products;
 
   renderProducts(products);
-
   // Filters
   $('#company-filter').change(companyFilter);
   $('#size-filter').change(sizeFilter);
@@ -23,6 +22,15 @@ $(document).ready(async function () {
     $('#login-btn').hide();
     $('#logout-btn').removeClass('visually-hidden');
   }
+
+  localStorage.setItem('products', JSON.stringify({ products: [] }));
+  $('#cart-btn').click(function (e) {
+    e.preventDefault();
+    if (!user) {
+      alert('Please log in :)');
+      window.location.reload();
+    } else window.location.href = '../../cart.html';
+  });
 
   $('#logout-btn').click(function () {
     localStorage.removeItem('user');

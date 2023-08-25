@@ -6,7 +6,7 @@ const authController = require('../controllers/authController.js');
 
 router
   .route('/')
-  .get(authController.protect, reservationController.getAllReservation)
+  .get(reservationController.getAllReservation)
   .post(authController.protect, reservationController.createReservation);
 
 router
