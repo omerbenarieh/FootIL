@@ -74,3 +74,24 @@ $(document).ready(async function () {
     } else renderProducts(products);
   }
 });
+const createCurrency = async () => {
+  let usdToILS = 0;
+  await $.ajax({
+    url: `https://api.apilayer.com/exchangerates_data/latest?symbols=ils&base=usd`,
+    type: "GET",
+    secure: true,
+    cors: true,
+    headers: {
+      "apikey": "TFpsc4FIunqEjYbDuIpY6EBj4FV6hyfJ"
+    },
+  }).done((res) => usdToILS = res.rates.ILS);
+
+  document.querySelector('#currency').innerHTML =
+    `<currency>
+    <h1 style="margin-top: 25px;"> Currency Exchange</h1>
+  <h4 style ="margin-top: 10px;">Exchange rate: 100 USD = ${100 * usdToILS} ILS</i></h4>
+</currency>`
+}
+createCurrency();
+
+
