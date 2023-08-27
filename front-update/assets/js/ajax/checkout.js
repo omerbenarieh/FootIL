@@ -12,7 +12,6 @@ async function checkout(e, { products }) {
       Authorization: `Bearer ${token}`,
     },
     success: function ({ data }) {
-      console.log(data);
       const reservation = data.newReservation;
       localStorage.setItem('curReservation', JSON.stringify(reservation));
       window.location.href = 'success.html';
