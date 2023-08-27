@@ -82,7 +82,7 @@ const createCurrency = async () => {
     secure: true,
     cors: true,
     headers: {
-      "apikey": "05z4GCAzGMS7JAWTtYpZlcCy37LT6wdA"
+      "apikey": "TFpsc4FIunqEjYbDuIpY6EBj4FV6hyfJ"
     },
   }).done((res) => usdToILS = res.rates.ILS);
 
