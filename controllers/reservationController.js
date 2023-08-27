@@ -19,7 +19,6 @@ exports.createReservation = async (req, res, next) => {
   const products = req.body;
   let totalPrice = 0;
 
-  // Use Promise.all to wait for all asynchronous operations to complete
   await Promise.all(
     products.map(async product => {
       const pricePerProduct = await Product.findOne({ _id: product._id });
