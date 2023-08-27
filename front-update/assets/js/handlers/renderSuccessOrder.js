@@ -15,7 +15,7 @@ function renderSuccessOrder() {
   const totalPrice = JSON.parse(
     localStorage.getItem('curReservation')
   ).totalPrice;
-  $('#totalPrice').html(`<h4>Total cost: ${totalPrice}</h4>`);
+  $('#totalPrice').html(`<h4>Total cost: ${totalPrice}$</h4>`);
 
   const formatted = formatDate(reservation);
   container.innerHTML += `<h4 class="mb-4 mt-4">Date: ${formatted.formattedDate}, Time: ${formatted.formattedTime}</h4>`;
