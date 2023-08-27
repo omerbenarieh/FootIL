@@ -1,7 +1,14 @@
 const User = require('../models/userModel');
-
+const catchAsync = require('../utils/catchAsync.js');
 exports.getAllUsers = async (req, res) => {
-  const users = await User.find({ active: true }).select('-__v');
+  const users = await User.find()
+    .select('-__v')
+    .populate({
+      path: 'reservations',
+      populate: {
+        path: 'products',
+      },
+    });
   res.status(200).json({
     status: 'success',
     data: {
@@ -13,16 +20,15 @@ exports.getAllUsers = async (req, res) => {
 
 exports.getUser = async (req, res) => {
   const id = req.params.id;
-  const user = await User.findById(id);
+  const user = await User.findById(id)
+    .select('-__v')
+    .populate({
+      path: 'reservations',
+      populate: {
+        path: 'products',
+      },
+    });
   res.status(200).json({
-    status: 'success',
-    data: user,
-  });
-};
-
-exports.createUser = async (req, res) => {
-  const user = await User.create(req.body);
-  res.status(201).json({
     status: 'success',
     data: user,
   });
@@ -31,16 +37,18 @@ exports.createUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
   const id = req.params.id;
   const user = await User.findByIdAndUpdate(id, req.body, {
+    new: true,
     runValidators: true,
   });
-  res.status(204).json({
+
+  res.status(201).json({
     status: 'success',
     data: user,
   });
 };
 
-exports.deleteUser = async (req, res) => {
+exports.deleteUser = catchAsync(async (req, res) => {
   const id = req.params.id;
-  await User.findByIdAndUpdate(id, { active: false }, { runValidators: true });
-  res.status(410).json();
-};
+  await User.findByIdAndDelete(id);
+  res.status(204).json();
+});

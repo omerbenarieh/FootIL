@@ -1,23 +1,13 @@
 const mongoose = require('mongoose');
+
 const reservationSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    unique: [true, 'Must have unique reservation id'],
+  userOrdered: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
   },
-
-  date: Date,
-
-  user: {
-    //refarance
-  },
-
-  products: {
-    //users products,
-  },
-
-  status: {
-    arrived: ['true', 'false'],
-  },
+  dateOfReservation: { type: Date, default: () => Date.now() },
+  products: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
+  totalPrice: { type: Number, default: 0 },
 });
 
-module.exports = reservationSchema;
+module.exports = mongoose.model('Reservation', reservationSchema);

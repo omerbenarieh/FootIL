@@ -1,28 +1,32 @@
 const mongoose = require('mongoose');
-const productSchema = mongoose.Schema({
-  productName: String,
 
-  companyName: {
-    type: String,
-    require: [true, 'Company must have a name.'],
-    trim: true,
+const productSchema = new mongoose.Schema({
+  company: { type: String, enum: ['nike', 'adidas'], required: true },
+  name: String,
+  size: {
+    type: Number,
+    validate: {
+      validator: function (size) {
+        return size >= 42 && size <= 45;
+      },
+      message: 'Invalid size for the selected model',
+    },
+    required: true,
   },
-
+  price: {
+    type: Number,
+    validate: {
+      validator: function (price) {
+        return price > 0;
+      },
+    },
+    message: 'Invalid price, Please insert a positive number.',
+    required: true,
+  },
   image: {
     type: String,
-    default: 'default-img.jpg',
+    default: 'product.jpg',
   },
-
-  size: {
-    require: [true, 'Shoe must have a size.'],
-    type: Number,
-    min: 35,
-    max: 50,
-  },
-
-  color: String,
-
-  prise: Number,
 });
 
-module.exports = productSchema;
+module.exports = mongoose.model('Product', productSchema);

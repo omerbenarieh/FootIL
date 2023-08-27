@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -19,10 +20,13 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Please provide a password'],
-    minlength: 8,
+    /* Remove comment when deploy
+
+     validate: [validator.isStrongPassword, 'Please use a strong *password.'],*/
     select: false,
   },
-  passwordConfirm: {
+
+  confirmPassword: {
     type: String,
     required: [true, 'Please confirm your password.'],
     validate: {
@@ -33,36 +37,46 @@ const userSchema = new mongoose.Schema({
     },
     select: false,
   },
-  passwordChangedAt: Date,
-  passwordResetToken: String,
-  passwordResetExpires: Date,
-  active: {
-    type: Boolean,
-    default: true,
-    select: false,
+  createdAt: {
+    type: Date,
+    default: () => Date.now(),
+    immutable: true,
   },
+  passwordChangedAt: {
+    type: Date,
+    default: () => Date.now(),
+  },
+
   image: {
     type: String,
     default: 'default.jpg',
   },
+
   role: {
     type: String,
     enum: ['user', 'admin'],
     default: 'user',
   },
 
-  address: {
-    type: String,
-    city: String,
-    street: String,
-    houseNumber: Number,
-    floor: Number,
-    apartment: Number,
-  },
-  // need to add list of product model
   balance: {
     type: Number,
     default: 500,
   },
+  reservations: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reservation' }],
 });
+
+// Hashing the password when user created or when password is changed
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
+  this.password = await bcrypt.hash(this.password, 12);
+
+  this.confirmPassword = undefined;
+  next();
+});
+
+// Check if the hashed input password is the corresponding DB hashed password
+userSchema.methods.correctPassword = async function (password, hashPassword) {
+  return await bcrypt.compare(password, hashPassword);
+};
+
 module.exports = mongoose.model('User', userSchema);
