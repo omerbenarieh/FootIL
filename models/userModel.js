@@ -23,7 +23,6 @@ const userSchema = new mongoose.Schema({
     /* Remove comment when deploy
 
      validate: [validator.isStrongPassword, 'Please use a strong *password.'],*/
-
     select: false,
   },
 
