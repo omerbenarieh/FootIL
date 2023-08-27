@@ -15,7 +15,7 @@ function renderCart({ products }) {
         <div class="col-md-3">
           <div class="product-image">
             <img
-              class="img-fluid d-block mx-auto image"
+              class="img-fluid d-block mx-auto image rounded-circle"
               id="product-img"
               src="${image}"
             />
@@ -36,7 +36,6 @@ function renderCart({ products }) {
           </div>
         </div>
         <div class="col-6 col-md-2 quantity">
-    
         </div>
         <div class="col-6 col-md-2 price">
           <span id="product-price">$${price}</span>
@@ -50,6 +49,7 @@ function renderCart({ products }) {
     (accumulator, product) => accumulator + product.price,
     0
   );
+
   const summary = `
       <div class="summary"
             style="

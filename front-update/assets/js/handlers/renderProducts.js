@@ -19,6 +19,7 @@ function renderProducts(products) {
         id="product-img-${index}"
         src="${image}"
         style="margin-left: 0px; height: 150px; width: 200px"
+        class="rounded-circle"
       />
       <h3 class="text-center card-title" id="product-company-${index}">
         ${company}
