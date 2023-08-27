@@ -73,48 +73,25 @@ $(document).ready(async function () {
       renderProducts(filteredProducts);
     } else renderProducts(products);
   }
-  document.addEventListener('DOMContentLoaded', () => {
-    const apiKey = '7hpOaMEbwt2q9OtrdnmRZa21z3BjcSBs';
-    const apiUrl = 'https://api.stockdio.com/visualization/financial/charts/v1/SingleQuote';
-
-    function fetchStockPrice(symbol) {
-      return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', `${apiUrl}?symbol=${symbol}&apiKey=${apiKey}`, true);
-        xhr.onload = () => {
-          if (xhr.status === 200) {
-            const data = JSON.parse(xhr.responseText);
-            resolve(data.stockPrice);
-          } else {
-            reject(new Error(`Request failed with status: ${xhr.status}`));
-          }
-        };
-        xhr.onerror = () => {
-          reject(new Error('Request failed'));
-        };
-        xhr.send();
-      });
-    }
-
-    fetchStockPrice('nike')
-      .then(nikeStockPrice => {
-        const nikeStockElement = document.getElementById('nike-stock');
-        nikeStockElement.textContent = `$${nikeStockPrice.toFixed(2)}`;
-      })
-      .catch(error => {
-        console.error('Error fetching Nike data:', error);
-      });
-
-    fetchStockPrice('adidas')
-      .then(adidasStockPrice => {
-        const adidasStockElement = document.getElementById('adidas-stock');
-        adidasStockElement.textContent = `$${adidasStockPrice.toFixed(2)}`;
-      })
-      .catch(error => {
-        console.error('Error fetching Adidas data:', error);
-      });
-  });
-
 });
+const createCurrency = async () => {
+  let usdToILS = 0;
+  await $.ajax({
+    url: `https://api.apilayer.com/exchangerates_data/latest?symbols=ils&base=usd`,
+    type: "GET",
+    secure: true,
+    cors: true,
+    headers: {
+      "apikey": "TFpsc4FIunqEjYbDuIpY6EBj4FV6hyfJ"
+    },
+  }).done((res) => usdToILS = res.rates.ILS);
+
+  document.querySelector('#currency').innerHTML =
+    `<currency>
+    <h1 style="margin-top: 25px;"> Currency Exchange</h1>
+  <h4 style ="margin-top: 10px;">Exchange rate: 100 USD = ${100 * usdToILS} ILS</i></h4>
+</currency>`
+}
+createCurrency();
 
 

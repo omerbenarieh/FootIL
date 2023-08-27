@@ -46,63 +46,7 @@
   </nav>
 
   <div class="container text-center" id="container">
-    <div style="font-size: large;">
-      <h1>Stock Prices Due To This Day</h1>
-      <div id="nikeStock" style="font-size: x-large;"></div>
-      <div id="adidasStock" style="font-size: x-large;"></div>
-    </div>
-
-
-    <script>
-      const apiKey = '9EZJH5U4Y9JBIV1V';
-      const nikeSymbol = 'NKE';
-      const adidasSymbol = 'ADDYY';
-
-      // Fetch Nike stock data
-      fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${nikeSymbol}&interval=5min&apikey=${apiKey}`)
-        .then(response => response.json())
-        .then(data => {
-          const nikeStockDiv = document.getElementById('nikeStock');
-          nikeStockDiv.innerHTML = `Nike Stock Price live: $${data['Time Series (5min)'][Object.keys(data['Time Series (5min)'])[0]]['1. open']}`;
-        });
-      // Fetch ADIDAS stock data
-      fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${adidasSymbol}&interval=5min&apikey=${apiKey}`)
-        .then(response => response.json())
-        .then(data => {
-          const adidasStockDiv = document.getElementById('nikeStock');
-          adidasStockDiv.innerHTML = `Adidas Stock Price live: $${data['Time Series (5min)'][Object.keys(data['Time Series (5min)'])[0]]['1. open']}`;
-        });
-      // // Fetch Adidas stock data
-      // fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${adidasSymbol}&interval=5min&apikey=${apiKey}`)
-      //   .then(response => {
-      //     if (!response.ok) {
-      //       throw new Error('Network response was not ok');
-      //     }
-      //     return response.json();
-      //   })
-      //   .then(data => {
-      //     const adidasStockDiv = document.getElementById('adidasStock');
-      //     const timeSeriesData = data['Time Series (5min)'];
-
-      //     if (timeSeriesData) {
-      //       const latestData = timeSeriesData[Object.keys(timeSeriesData)[0]];
-      //       if (latestData && latestData['1. open']) {
-      //         adidasStockDiv.innerHTML = `Adidas Stock Price: $${latestData['1. open']}`;
-      //       } else {
-      //         adidasStockDiv.innerHTML = 'Adidas Stock Data Not Available.';
-      //       }
-      //     } else {
-      //       adidasStockDiv.innerHTML = 'Adidas tock Data Not Available.';
-      //     }
-      //   })
-      //   .catch(error => {
-      //     console.error('Error fetching Adidas stock data:', error);
-      //     const adidasStockDiv = document.getElementById('adidasStock');
-      //     adidasStockDiv.innerHTML = 'Error fetching Adidas stock data.';
-      //   });
-
-    </script>
-
+    <div id="currency"></div>
     <h1 style="margin-top: 25px;">OUR products</h1>
     <iframe width="700" height="380" src="https://www.youtube.com/embed/VnE7m8JI7MY?autoplay=1%mute=1" frameborder="0"
       allowfullscreen></iframe>
