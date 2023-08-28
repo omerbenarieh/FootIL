@@ -37,10 +37,11 @@ exports.getUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
   const id = req.params.id;
   const user = await User.findByIdAndUpdate(id, req.body, {
+    new: true,
     runValidators: true,
   });
 
-  res.status(204).json({
+  res.status(201).json({
     status: 'success',
     data: user,
   });
@@ -48,8 +49,6 @@ exports.updateUser = async (req, res) => {
 
 exports.deleteUser = catchAsync(async (req, res) => {
   const id = req.params.id;
-
-  const deletedUser = await User.findByIdAndDelete(id);
-
+  await User.findByIdAndDelete(id);
   res.status(204).json();
 });
