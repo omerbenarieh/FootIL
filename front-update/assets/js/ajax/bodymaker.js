@@ -32,4 +32,34 @@ function productBody(index) {
   };
 }
 
-export { signupBody, loginBody, productBody };
+function updateUserSettingsBody() {
+  const updatedData = {};
+  const name = $('#name').val();
+  const email = $('#email').val();
+  const password = $('#password').val();
+  const confirmPassword = $('#confirmPassword').val();
+  const image = $('#image')[0].files[0]; // Get the selected image file
+
+  if (name) {
+    updatedData.name = name;
+  }
+
+  if (email) {
+    updatedData.email = email;
+  }
+
+  if (password) {
+    updatedData.password = password;
+  }
+
+  if (confirmPassword) {
+    updatedData.confirmPassword = confirmPassword;
+  }
+
+  if (image) {
+    updatedData.image = image.name;
+  }
+  return updatedData;
+}
+
+export { signupBody, loginBody, productBody, updateUserSettingsBody };

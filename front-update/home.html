@@ -7,6 +7,13 @@
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
     <title>Foot-IL</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css"
+    />
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/chat.css" />
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.reflowhq.com/v2/toolkit.min.css" />
     <link
@@ -79,8 +86,10 @@
         </div>
       </div>
     </nav>
+
     <div class="container text-center" id="container">
-      <h1 style="margin-bottom: 25px">OUR products</h1>
+      <div id="currency"></div>
+      <h1 style="margin-top: 25px">OUR products</h1>
       <iframe
         width="700"
         height="380"
@@ -112,44 +121,44 @@
       </div>
       <div id="cards"></div>
       <div data-reflow-type="product-search" style="margin-bottom: 10px"></div>
-      <!-- <div class="card-group"></div> -->
-      <section class="py-4 py-xl-5">
-        <div class="container">
-          <div
-            class="text-dark bg-light border rounded border-0 border-light d-flex flex-column justify-content-between align-items-center flex-lg-row p-4 p-lg-5"
-            data-bs-theme="light"
+      <div style="margin-top: 10px;">
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1KKeOitZcmfscowBrgAYrAR5oaxrx698&ehbc=2E312F"
+          width="1000" height="500"></iframe>
+      </div>
+        <section id="section-chat">
+          <button
+            id="chat-btn"
+            class="btn btn-primary chat-icon"
+            style="
+              position: fixed;
+              bottom: 30px;
+              right: 30px;
+              z-index: 9999;
+              font-size: 30px;
+              font-weight: 30;
+              padding: 5px;
+            "
           >
-            <div class="text-center text-lg-start py-3 py-lg-1">
-              <h2 class="fw-bold mb-2">
-                <strong>Subscribe to our newsletter</strong>
-              </h2>
-              <p class="mb-0"></p>
+            chat<canvas
+              id="myCanvas"
+              width="35"
+              height="3"
+              style="display: block; margin: 0 auto"
+            ></canvas>
+            <i class="fa fa-comment" style="display: block; margin: 0 auto"></i>
+          </button>
+
+          <div id="chat-pop-up" class="chat-popup">
+            <div class="chat-area"></div>
+            <div class="input-area">
+              <input id="client-chat-input" type="text" />
+              <button id="emoji-btn">&#127773;</button>
+              <button id="client-submit" class="submit">
+                <i class="material-icons"> send</i>
+              </button>
             </div>
-            <form
-              class="d-flex justify-content-center flex-wrap my-2"
-              method="post"
-            >
-              <div class="my-2">
-                <input
-                  class="form-control"
-                  type="email"
-                  id="email-input-subscribe"
-                  name="email"
-                  placeholder="Your Email"
-                />
-              </div>
-              <div class="my-2">
-                <button
-                  class="btn btn-primary ms-sm-2"
-                  id="subscribe-btn"
-                  type="submit"
-                >
-                  Subscribe
-                </button>
-              </div>
-            </form>
           </div>
-        </div>
+        </section>
         <footer>
           <div class="container py-4 py-lg-5">
             <hr />
@@ -204,9 +213,9 @@
         </footer>
       </section>
     </div>
-    <!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script> -->
-    <!-- <script src="assets/js/Card-Carousel-slider.js"></script> -->
     <script type="module" src="./assets/js/home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"></script>
+    <script type="module" src="assets/js/chat.js"></script>
   </body>
 </html>

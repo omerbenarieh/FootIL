@@ -10,7 +10,7 @@ async function signup(e) {
     data: signupBody(),
     success: function (data) {
       const isAdmin = data.user.role === 'admin';
-      const user = { isLoggedIn: true, isAdmin };
+      const user = { isLoggedIn: true, isAdmin, user: data.user };
       localStorage.setItem('user', JSON.stringify(user));
       window.location.href = 'home.html';
     },
