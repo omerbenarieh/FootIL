@@ -16,11 +16,11 @@ $(document).ready(async function () {
                 data: amount,
                 backgroundColor: [
                     'rgba(128,128,0)',
-                    'rgba(165,42,42)'
+                    'rgba(47,79,79)'
                 ],
                 borderColor: [
                     'rgba(128,128,0)',
-                    'rgba(165,42,42)'
+                    'rgba(47,79,79)'
                 ],
                 borderWidth: 2
             }]
