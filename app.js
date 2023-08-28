@@ -8,11 +8,19 @@ const path = require('path');
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
 const reservationRouter = require('./routes/reservationRoutes');
+const chat = require('./controllers/chatController.js');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
+
 const app = express();
+let server = require('http').createServer(app);
+const socketIO = require('socket.io');
+const io = socketIO(server);
+chat.handleChat(io);
+
+
 
 // Using Cors (For XSS problem)
 app.use(cors());

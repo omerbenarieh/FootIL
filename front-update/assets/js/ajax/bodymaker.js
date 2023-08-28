@@ -34,7 +34,6 @@ function productBody(index) {
 
 function updateUserSettingsBody() {
   const updatedData = {};
-
   const name = $('#name').val();
   const email = $('#email').val();
   const password = $('#password').val();
