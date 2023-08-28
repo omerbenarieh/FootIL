@@ -24,7 +24,6 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     </script>
-
 </head>
 
 <body>
@@ -47,17 +46,20 @@
                 </ul>
                 <a class="btn btn-primary mx-auto" role="button" id="cart-btn">cart</a><a
                     class="btn btn-primary mx-auto visually-hidden" role="button" id="admin-page"
-                    href="admin-page.html">app
+                    href="/admin-page.html">app
                     management</a><a class="btn btn-primary mx-auto visually-hidden" role="button" id="user-page"
-                    href="user-page.html">My Account</a><a class="btn btn-primary mx-auto visually-hidden" role="button"
-                    id="logout-btn">log out</a><a class="btn btn-primary" role="button" id="login-btn"
-                    style="margin-right: 10px" href="login.html">log in</a><a class="btn btn-primary" role="button"
-                    id="signup-btn" href="signup.html">sign
+                    href="/user-page.html">My Account</a><a class="btn btn-primary mx-auto visually-hidden"
+                    role="button" id="logout-btn">log out</a><a class="btn btn-primary" role="button" id="login-btn"
+                    style="margin-right: 10px" href="/login.html">log in</a><a class="btn btn-primary" role="button"
+                    id="signup-btn" href="/signup.html">sign
                     up</a>
             </div>
         </div>
     </nav>
-    <canvas class="container-sm" id="salesChart" width="300" height="200"></canvas>
+    <canvas id="salesChart"
+        style="width:100%;max-width:900px;margin-left: 350px; margin-top: 100px;margin-bottom: 100px;"></canvas>
+    <canvas id="productChart"
+        style="width:100%;max-width:900px;margin-left: 350px; margin-top: 100px;margin-bottom: 100px;"></canvas>
 
     </div>
     <section id="section-chat">
@@ -122,7 +124,6 @@
     </section>
     </div>
     <script type="module" src="assets/js/statisticsBrands.js"></script>
-    <!-- <script type="module" src="./assets/js/home.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"></script>
 
