@@ -61,10 +61,12 @@ function renderProducts(products) {
   for (let i = 0; i < j; i++) {
     $(`#add-${i}`).click(function (e) {
       e.preventDefault();
+      e.stopPropagation(); // Prevent event from bubbling up
       addProduct(e, id[i]);
     })
 
     $(`#${i}`).click(function (e) {
+      e.preventDefault()
       handleProductClick(e, id[i]);
     });
   }
