@@ -1,7 +1,7 @@
 // Imports
 import { getAllProducts } from './ajax/getAllProducts.js';
 import { renderProducts } from './handlers/renderProducts.js';
-import { handleProductClick } from './handlers/handlerProductClick.js';
+
 
 $(document).ready(async function () {
   const res = await getAllProducts();
@@ -41,10 +41,6 @@ $(document).ready(async function () {
     localStorage.removeItem('curReservation');
     localStorage.removeItem('products');
 
-    $('.product').click(function (e) {
-      e.preventDefault();
-      handleProductClick(e);
-    })
 
     $('#signup-btn').show();
     $('#login-btn').show();

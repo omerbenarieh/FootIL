@@ -20,12 +20,12 @@ $(document).ready(async function () {
                 label: 'Sales Amount',
                 data: amount,
                 backgroundColor: [
-                    'rgba(128,128,0)',
-                    'rgba(47,79,79)'
+                    'rgb(189, 183, 107)',
+                    'rgb(143, 188, 143)'
                 ],
                 borderColor: [
-                    'rgba(128,128,0)',
-                    'rgba(47,79,79)'
+                    'rgb(189, 183, 107)',
+                    'rgb(143, 188, 143)'
                 ],
                 borderWidth: 2
             }]
@@ -53,7 +53,7 @@ $(document).ready(async function () {
             labels: dataChart[0],
             datasets: [{
                 label: "Number of Orders",
-                backgroundColor: "rgb(46, 204, 113)",
+                backgroundColor: "rgb(47, 79, 79)",
                 data: dataChart[1]
             }]
         },
@@ -84,7 +84,6 @@ $(document).ready(async function () {
 
             // Redirect based on the clicked data. You can customize this logic.
             if (label === names[0]) {
-
                 window.location.href = "https://example.com/red";
             } else if (label === "Blue") {
                 window.location.href = "https://example.com/blue";

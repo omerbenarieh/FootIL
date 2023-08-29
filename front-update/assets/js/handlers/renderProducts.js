@@ -1,4 +1,5 @@
 import { addProduct } from '../ajax/addProduct.js';
+import { handleProductClick } from '../ajax/handlerProductClick.js';
 
 function renderProducts(products) {
   const cardContainer = document.getElementById('cards');
@@ -14,8 +15,8 @@ function renderProducts(products) {
 
     const card = `
     <div class="card" >
-    <div class="card-body">
-    <a class="btn btn-primary product col" role="button" href="/product.html" >
+    <div class="card-body" >
+    <a id="${index}" class="btn btn-primary product col" role="button">
       <img
         id="product-img-${index}"
         src="${image}"
@@ -36,7 +37,7 @@ function renderProducts(products) {
         class="btn btn-primary"
         id="add-${index}"
         type="button"
-        style="margin-left: 14px"
+        style="margin-left: 14px ; background-color: rgb(80, 121, 102);"
       >
         add to cart
       </button>
@@ -61,6 +62,10 @@ function renderProducts(products) {
     $(`#add-${i}`).click(function (e) {
       e.preventDefault();
       addProduct(e, id[i]);
+    })
+
+    $(`#${i}`).click(function (e) {
+      handleProductClick(e, id[i]);
     });
   }
 }

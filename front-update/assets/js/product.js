@@ -1,7 +1,6 @@
-import { getProductByName } from './handlers/getProductByName';
-import { renderProduct } from './handlers/rendersProduct';
+import { renderProduct } from './handlers/rendersProduct.js';
 
 $(document).ready(async function () {
-    const productName = JSON.parse(localStorage.getItem('poduct-item'));
-    renderProduct(getProductByName(productName));
-})
+    const product = JSON.parse(localStorage.getItem('product-item'));
+    renderProduct(product);
+});
