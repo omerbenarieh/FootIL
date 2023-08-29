@@ -1,117 +1,83 @@
 <!DOCTYPE html>
-<html
-  data-bs-theme="light"
-  lang="en"
-  style="margin-right: 0px; margin-left: 10px"
->
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-    />
-    <title>Foot-IL</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap"
-    />
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/chat.css" />
-    <link rel="stylesheet" href="assets/css/Bootstrap-4---Product-List.css" />
-    <link rel="stylesheet" href="assets/css/Card-Carousel-slider.css" />
-    <link rel="stylesheet" href="assets/css/Card-Carousel.css" />
-    <link rel="stylesheet" href="assets/css/Filter.css" />
-    <link rel="stylesheet" href="assets/css/Footer-Multi-Column-icons.css" />
-    <link rel="stylesheet" href="assets/css/gift-product-long.css" />
-    <link rel="stylesheet" href="assets/css/Lista-Productos-Canito.css" />
-    <link rel="stylesheet" href="assets/css/Team-images.css" />
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-  </head>
+<html data-bs-theme="light" lang="en" style="margin-right: 0px; margin-left: 10px">
 
-  <body>
-    <nav class="navbar navbar-expand-md bg-body">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/home.html">Foot IL</a
-        ><button
-          data-bs-toggle="collapse"
-          class="navbar-toggler"
-          data-bs-target="#navcol-1"
-        >
-          <span class="visually-hidden">Toggle navigation</span
-          ><span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" href="/">Products</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="#"></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"></a></li>
-          </ul>
-          <a class="btn btn-primary ms-auto" role="button" href="/cart.html"
-            >see cart</a
-          ><a
-            class="btn btn-primary visually-hidden"
-            role="button"
-            style="margin-right: 10px"
-            href="/login.html"
-            >log in</a
-          ><a
-            class="btn btn-primary visually-hidden"
-            role="button"
-            href="/signup.html"
-            >sign up</a
-          >
-        </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>Foot-IL</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap" />
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/chat.css" />
+  <link rel="stylesheet" href="assets/css/Bootstrap-4---Product-List.css" />
+  <link rel="stylesheet" href="assets/css/Card-Carousel-slider.css" />
+  <link rel="stylesheet" href="assets/css/Card-Carousel.css" />
+  <link rel="stylesheet" href="assets/css/Filter.css" />
+  <link rel="stylesheet" href="assets/css/Footer-Multi-Column-icons.css" />
+  <link rel="stylesheet" href="assets/css/gift-product-long.css" />
+  <link rel="stylesheet" href="assets/css/Lista-Productos-Canito.css" />
+  <link rel="stylesheet" href="assets/css/Team-images.css" />
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md bg-body">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/home.html">Foot IL</a><button data-bs-toggle="collapse" class="navbar-toggler"
+        data-bs-target="#navcol-1">
+        <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navcol-1">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="/">Products</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#"></a></li>
+          <li class="nav-item"><a class="nav-link" href="#"></a></li>
+        </ul>
+        <a class="btn btn-primary ms-auto" role="button" href="/cart.html">see cart</a><a
+          class="btn btn-primary visually-hidden" role="button" style="margin-right: 10px" href="/login.html">log
+          in</a><a class="btn btn-primary visually-hidden" role="button" href="/signup.html">sign up</a>
       </div>
-    </nav>
-    <div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <h1 class="text-center mb-5" id="user-res"></h1>
-            <table
-              id="example"
-              class="table table-striped table-bordered"
-              cellspacing="0"
-              width="100%"
-            >
-              <thead>
-                <tr>
-                  <th>Number</th>
-                  <th>Date</th>
-                  <th>Shoes</th>
-                </tr>
-              </thead>
-              <tbody id="container"></tbody>
-            </table>
-          </div>
+    </div>
+  </nav>
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1 class="text-center mb-5" id="user-res"></h1>
+          <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th>Number</th>
+                <th>Date</th>
+                <th>Shoes</th>
+              </tr>
+            </thead>
+            <tbody id="container"></tbody>
+          </table>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="container mt-5 text-center">
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <h2 class="text-center mb-4">Update User Settings</h2>
-          <form id="settingsForm">
-            <div class="mb-3">
-              <label for="name" class="form-label">Name:</label>
-              <input type="text" class="form-control" id="name" name="name" />
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email:</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-              />
-            </div>
-            <!-- <div class="mb-3">
+  <div class="container mt-5 text-center">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="text-center mb-4">Update User Settings</h2>
+        <form id="settingsForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" />
+          </div>
+          <!-- <div class="mb-3">
               <label for="password" class="form-label">Password:</label>
               <input
                 type="password"
@@ -131,42 +97,39 @@
                 name="confirmPassword"
               />
             </div> -->
-            <div class="mb-3">
-              <label for="imageSrc" class="form-label">Image:</label>
-              <input
-                type="file"
-                class="form-control"
-                id="image"
-                name="imageSrc"
-              />
-            </div>
-            <button type="button" class="btn btn-primary" id="updateButton">
-              Update Settings
-            </button>
-          </form>
-        </div>
+          <div class="mb-3">
+            <label for="imageSrc" class="form-label">Image:</label>
+            <input type="file" class="form-control" id="image" name="imageSrc" />
+          </div>
+          <button type="button" class="btn btn-primary" id="updateButton">
+            Update Settings
+          </button>
+        </form>
       </div>
     </div>
-    <section id="section-chat">
-      <button id="chat-btn" class="btn btn-primary chat-icon" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-size: 30px; font-weight: 30; padding: 5px;" >
-        chat<canvas id="myCanvas" width="35" height="3" style="display: block; margin: 0 auto;"></canvas>
-        <i class="fa fa-comment" style="display: block; margin: 0 auto;"></i>
-      </button>
-    
-      <div id="chat-pop-up" class="chat-popup">
-        <div class="chat-area">
-        </div>
-        <div class="input-area">
-          <input id="client-chat-input" type="text">
-          <button id="emoji-btn"> &#127773;</button>
-          <button id="client-submit" class="submit"> <i class="material-icons"> send</i></button>
-        </div>
-      </div>
-    </section>
+  </div>
+  <section id="section-chat">
+    <button id="chat-btn" class="btn btn-primary chat-icon"
+      style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-size: 30px; font-weight: 30; padding: 5px;">
+      chat<canvas id="myCanvas" width="35" height="3" style="display: block; margin: 0 auto;"></canvas>
+      <i class="fa fa-comment" style="display: block; margin: 0 auto;"></i>
+    </button>
 
-    <script type="module" src="assets/js/user.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"></script>
-    <script type="module" src="assets/js/chat.js"></script>
-  </body>
+    <div id="chat-pop-up" class="chat-popup">
+      <div class="chat-area">
+      </div>
+      <div class="input-area">
+        <input id="client-chat-input" type="text">
+        <button id="emoji-btn"> &#127773;</button>
+        <button id="client-submit" class="submit"> <i class="material-icons"> send</i></button>
+      </div>
+    </div>
+  </section>
+
+  <script type="module" src="assets/js/user.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"></script>
+  <script type="module" src="assets/js/chat.js"></script>
+</body>
+
 </html>
