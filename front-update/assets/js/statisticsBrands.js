@@ -44,7 +44,7 @@ $(document).ready(async function () {
     console.log(products);
     var productsChart = document.getElementById('productChart').getContext('2d');
 
-    const productData = await (get10PopularProducts(reservations, products));
+    var productData = await (get10PopularProducts(reservations, products));
     const dataChart = [productData.names, productData.values];
 
     var chartProducts = new Chart(productsChart, {
@@ -69,6 +69,29 @@ $(document).ready(async function () {
             }
         }
     });
+
+
+    document.getElementById('productChart').onclick = function (evt) {
+        var activePoints = myChart.getElementsAtEvent(evt);
+        const names = productData.names;
+        if (activePoints.length > 0) {
+            // Get the first clicked element
+            var firstPoint = activePoints[0];
+
+            // Retrieve information about the clicked point
+            var label = myChart.data.labels[firstPoint._index];
+            var value = myChart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
+
+            // Redirect based on the clicked data. You can customize this logic.
+            if (label === names[0]) {
+
+                window.location.href = "https://example.com/red";
+            } else if (label === "Blue") {
+                window.location.href = "https://example.com/blue";
+            }
+            // ... and so on for other labels ...
+        }
+    };
 });
 
 

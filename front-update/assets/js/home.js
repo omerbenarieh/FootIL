@@ -1,6 +1,7 @@
 // Imports
 import { getAllProducts } from './ajax/getAllProducts.js';
 import { renderProducts } from './handlers/renderProducts.js';
+import { handleProductClick } from './handlers/handlerProductClick.js';
 
 $(document).ready(async function () {
   const res = await getAllProducts();
@@ -39,6 +40,11 @@ $(document).ready(async function () {
     localStorage.removeItem('token');
     localStorage.removeItem('curReservation');
     localStorage.removeItem('products');
+
+    $('.product').click(function (e) {
+      e.preventDefault();
+      handleProductClick(e);
+    })
 
     $('#signup-btn').show();
     $('#login-btn').show();
@@ -92,9 +98,8 @@ const createCurrency = async () => {
 
   document.querySelector('#currency').innerHTML = `<currency>
     <h1 style="margin-top: 25px;"> Currency Exchange</h1>
-  <h4 style ="margin-top: 10px;">Exchange rate: 100 USD = ${
-    100 * usdToILS
-  } ILS</i></h4>
+  <h4 style ="margin-top: 10px;">Exchange rate: 100 USD = ${100 * usdToILS
+    } ILS</i></h4>
 </currency>`;
 };
 createCurrency();

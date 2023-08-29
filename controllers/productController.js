@@ -31,6 +31,16 @@ exports.getProduct = catchAsync(async (req, res) => {
   });
 });
 
+exports.getProductByName = catchAsync(async (req, res) => {
+  const name = req.params.name;
+  const product = await Product.find(name).select('-__v');
+  res.status(200).json({
+    status: 'success',
+    data: product,
+  });
+});
+
+
 exports.updateProduct = catchAsync(async (req, res) => {
   const id = req.params.id;
   const product = await Product.findByIdAndUpdate(id, req.body, {

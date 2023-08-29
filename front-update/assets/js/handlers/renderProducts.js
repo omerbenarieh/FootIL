@@ -13,8 +13,9 @@ function renderProducts(products) {
     const price = product.price;
 
     const card = `
-    <div class="card">
+    <div class="card" >
     <div class="card-body">
+    <a class="btn btn-primary product col" role="button" href="/product.html" >
       <img
         id="product-img-${index}"
         src="${image}"
@@ -39,6 +40,7 @@ function renderProducts(products) {
       >
         add to cart
       </button>
+      </a>
     </div>
   </div>`;
 
