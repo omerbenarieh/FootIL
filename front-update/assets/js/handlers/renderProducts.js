@@ -42,7 +42,7 @@ function renderProducts(products) {
     </div>
   </div>`;
 
-    if (index % 3 === 0) {
+    if (index % 5 === 0) {
       currentCardGroup = document.createElement('div');
       currentCardGroup.classList.add('card-group');
       cardContainer.appendChild(currentCardGroup);
