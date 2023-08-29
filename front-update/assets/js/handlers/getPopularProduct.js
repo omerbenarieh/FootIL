@@ -17,8 +17,8 @@ async function get10PopularProducts(reservations, products) {
     let names = []
     let values = []
     arrayMap.forEach(elemant => { names.push(elemant[0]); values.push(elemant[1]) });
-    console.log(names, values);
-
+    names = names.slice(0, 10);
+    values = values.slice(0, 10);
     return { names, values };
 
 }
