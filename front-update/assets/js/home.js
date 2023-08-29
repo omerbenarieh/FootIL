@@ -2,6 +2,7 @@
 import { getAllProducts } from './ajax/getAllProducts.js';
 import { renderProducts } from './handlers/renderProducts.js';
 
+
 $(document).ready(async function () {
   const res = await getAllProducts();
   const products = res.data.products;
@@ -39,6 +40,7 @@ $(document).ready(async function () {
     localStorage.removeItem('token');
     localStorage.removeItem('curReservation');
     localStorage.removeItem('products');
+
 
     $('#signup-btn').show();
     $('#login-btn').show();
@@ -92,9 +94,8 @@ const createCurrency = async () => {
 
   document.querySelector('#currency').innerHTML = `<currency>
     <h1 style="margin-top: 25px;"> Currency Exchange</h1>
-  <h4 style ="margin-top: 10px;">Exchange rate: 100 USD = ${
-    100 * usdToILS
-  } ILS</i></h4>
+  <h4 style ="margin-top: 10px;">Exchange rate: 100 USD = ${100 * usdToILS
+    } ILS</i></h4>
 </currency>`;
 };
 createCurrency();

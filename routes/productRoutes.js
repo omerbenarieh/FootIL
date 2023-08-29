@@ -19,4 +19,8 @@ router
     productController.deleteProduct
   );
 
+router
+  .route('/:name')
+  .get(productController.getProductByName)
+
 module.exports = router;
